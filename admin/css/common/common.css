@@ -1,0 +1,100 @@
+/* Basic HTML
+----------------------------------------------------------------------------------------------------*/
+body { font-size: 12px; line-height: 1.5; height:100%; -webkit-font-smoothing:antialiased;}
+input,select,button { vertical-align:middle; }
+form {clear:both;}
+/* Utility Classes
+----------------------------------------------------------------------------------------------------*/
+/* http://sonspring.com/journal/clearing-floats */
+.clear { clear: both; display: block; overflow: hidden; visibility: hidden; width: 0; height: 0; }
+
+/* table layout */
+table.fixed { table-layout:fixed; }
+
+/* text align */
+.tl{ text-align:left !important; }
+.tr{ text-align:right !important; }
+.tc{ text-align:center !important; }
+.vt{ vertical-align:top !important; }
+
+
+/* float */
+.fl,.alignleft{float:left;}
+.fr{float:right;}
+
+
+/* display */
+.hide{display:none;}
+.show{display:block;}
+
+/* text */
+input.text,textarea.text,select{ background-color:#FFF; border:solid 1px #dfdfdf; -moz-border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px; border-radius:4px; padding:3px 2px; _padding:2px 2px; }
+select{ padding:1px; }
+
+/* button */
+
+button, .button, .table-nav-button {
+    min-width:70px; *min-width:auto;
+    border-width:1px;
+    border-style:solid;
+    border-color:#bbb #999 #999 #bbb;
+    border-radius:2px;-webkit-border-radius:2px;-moz-border-radius:2px;-khtml-border-radius:2px;
+    font:normal normal normal 12px/12px Arial,sans-serif,"Microsoft Yahei";
+    color:#000;
+    text-align:center; text-decoration:none;text-shadow:0 1px 1px rgba(255,255,255,1);
+    background:#eee;background-image:-webkit-gradient(linear,0 0,0 100%,from(#fff),to(#ddd));background:-moz-linear-gradient(top,#fff,#ddd);filter:progid:DXImageTransform.Microsoft.Gradient(EndColorstr='#dddddd',StartColorstr='#ffffff',GradientType=0);
+    cursor:pointer;
+    margin:0; _margin-bottom:1px;
+    display:-moz-inline-box;display:inline-block;
+    *overflow:visible;
+    padding:2px 8px 2px; padding:6px 8px 3px\9; *padding:3px 8px 2px; _padding:3px 8px 2px;
+
+}
+button:visited, .button:visited{color:#666}
+button:focus, .button:focus, button:hover, .button:hover{border-color:#666}
+button:active, .button:active, .button-active{color:#000;background-color:#bbb;border-color:#999 #bbb #bbb #999;background-image:-webkit-gradient(linear,0 0,0 100%,from(#ddd),to(#fff));background-image:-moz-linear-gradient(top,#ddd,#fff);filter:progid:DXImageTransform.Microsoft.Gradient(EndColorstr='#ffffff',StartColorstr='#dddddd',GradientType=0)}
+a.button, span.button, div.button,button.button{ padding:4px 8px 5px; padding:5px 8px 3px\9; }
+.table-nav-button{ color:#000 !important; text-decoration:none !important; margin-right:5px;vertical-align: middle; line-height:13px;}
+
+kbd, code { font-family:Consolas, Monaco, Courier, monospace; background-color:#EAEAEA; font-size:11px; margin:0 1px; padding:1px 3px; }
+
+/* loading */
+.loading{ border:solid 1px #666666; background:#FFFFDF; padding:1px; padding-right:10px;}
+
+/* Percentage width */
+.wp{ width: 100% !important; }
+.wp5 { width: 5% !important; }	
+.wp10 { width: 10% !important; }
+.wp15 { width: 15% !important; }
+.wp20 { width: 20% !important; }
+.wp50 { width: 50% !important; }
+
+/* Fixed-width */
+.w10 { width: 10px !important; }
+.w20 { width: 20px !important; }
+.w30 { width: 30px !important; }
+.w40 { width: 40px !important; }
+.w50 { width: 50px !important; }
+.w100 { width: 100px !important; }
+.w150 { width: 150px !important; }
+.w200 { width: 200px !important; }
+.w250 { width: 250px !important; }
+.w300 { width: 300px !important; }
+.w350 { width: 350px !important; }
+.w400 { width: 400px !important; }
+.w450 { width: 450px !important; }
+.w500 { width: 500px !important; }
+.w550 { width: 550px !important; }
+.w600 { width: 600px !important; }
+.w650 { width: 650px !important; }
+.w700 { width: 700px !important; }
+.w750 { width: 750px !important; }
+.w800 { width: 800px !important; }
+.w850 { width: 850px !important; }
+.w900 { width: 900px !important; }
+.w950 { width: 950px !important; }
+
+.data-table tbody tr:hover,.data-table tbody tr.hover{background-color:#FFFFCC}
+.data-table tbody tr:hover .row-actions{ visibility:visible !important;}
+tr.noread{ font-weight:bold}
+tr.noread .row-actions{ font-weight:normal}

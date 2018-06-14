@@ -1,0 +1,84 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Purchase - Fill out the form below</title>
+<link href="purchase.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<form id="form" name="form" method="post" action="updata.php" onsubmit="return check(this)">
+<div><h2>Inquiry:</h2>
+<p>We will try to respond as soon as possible</p></div>
+<table width="100%" cellspacing="0">
+  <tr>
+    <td><label for="materials">materials:<span>(required)</span></label></td>
+  </tr>
+    <tr>
+    <td><input name="materials[]" type="checkbox" value="marble" /><input name="materials[]" type="checkbox" value="aggreagate" /></td>
+  </tr>
+    <tr>
+    <td><label for="application">application:<span>(required)</span></label></td>
+  </tr>
+    <tr>
+    <td><input name="application" type="text" id="application" /></td>
+  </tr>
+    <tr>
+    <td><label for="test">capacity:<span>(required)</span></label></td>
+  </tr>
+    <tr>
+    <td><input name="capacity" type="text" id="capacity" /></td>
+  </tr>
+    <tr>
+    <td><label for="products">products:<span>(required)</span></label></td>
+  </tr>
+    <tr>
+    <td><input name="products" type="text" id="products" /></td>
+  </tr>
+  <tr>
+    <td><label for="sTitle">title:<span>(required)</span></label></td>
+  </tr>
+    <tr>
+    <td><input name="title" type="text" id="stitle" /></td>
+  </tr>
+  <tr>
+    <td><label for="sName">Name:<span>(required)</span></label></td>
+  </tr>
+  <tr>
+    <td><input name="name" type="text" id="sName" /></td>
+  </tr>
+  <tr>
+    <td><label for="sEmail">Email:<span>(required)</span></label></td>
+  </tr>
+  <tr>
+    <td><input name="email" type="text" id="sEmail" /></td>
+  </tr>
+  <tr>
+    <td><label>Tel:<span>(optional)</span></label></td>
+  </tr>
+  <tr>
+    <td><input name="phone" type="text" /></td>
+  </tr>
+  <tr>
+    <td><label>Country:<span>(optional)</span></label></td>
+  </tr>
+  <tr>
+    <td><input name="country" type="text" /></td>
+  </tr>
+  <tr>
+    <td><label for="sContent">Inquiry:<span>(required)</span></label></td>
+  </tr>
+  <tr>
+    <td><textarea name="content" cols="45" rows="5" id="sContent" onfocus="if (this.value==text) {this.value='';this.style.cssText='color:#000000';} " onblur="if (this.value=='') {this.value=text;this.style.cssText='color:#808080'}"></textarea></td>
+  </tr>
+  <tr>
+    <td><input type="submit" value="Submit" class="submit" />
+	<input type="hidden" name="from_company" value="PPC" />
+      <input type="reset" value="Reset" class="submit" /></td>
+  </tr>
+</table>
+</form>
+<a href="updata.php">test</a>
+</body>
+</html>

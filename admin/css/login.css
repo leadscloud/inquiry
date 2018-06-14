@@ -1,0 +1,208 @@
+*{ margin:0; padding:0;}
+.bg_c {
+background: url(../images/bg_c.gif) !important;
+}
+body{ font-size:12px; font-family:Arial, Helvetica, sans-serif}
+.wrapper {
+width: 400px;
+margin: 0 auto;
+padding: 100px 0 0;
+}
+.box{
+	border:1px solid #C8C8C8;
+	border-radius: 4px;
+	overflow:hidden;
+}
+.content{ overflow:hidden; width:100%;}
+h1{ text-align:center; margin-top:60px;}
+
+.box .header.grey {
+height: 34px;
+line-height: 34px;
+border-bottom: 1px solid #CCC;
+box-shadow: inset 0 1px 0 0 rgba(255,255,255,0.5);
+border-radius: 4px 4px 0 0;
+background: #F9F9F9;
+background: -moz-linear-gradient(top, #F9F9F9 0%, #ECECEC 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#F9F9F9), color-stop(100%,#ECECEC));
+background: -webkit-linear-gradient(top, #F9F9F9 0%,#ECECEC 100%);
+background: -o-linear-gradient(top, #F9F9F9 0%,#ECECEC 100%);
+}
+.box .header img {
+display: inline-block;
+margin: 9px auto;
+margin-left: 8px;
+float: left;
+}
+.box .header.grey h3 {
+color: #383838;
+font-size:13px;
+float:left;
+margin-left: 8px;
+padding-left: 10px;
+background:url(../images/divider-header.png) left center no-repeat!important;
+}
+
+.wrapper .shadow {
+    background: url("../images/box-shadow.png") repeat scroll 0 0 transparent;
+    bottom: -10px;
+    height: 18px;
+    margin: -7px auto 0;
+    width: 372px;
+    z-index: 99;
+}
+
+
+
+
+label, .label {
+color: #666;
+font-size: 12px;
+font-weight: 700;
+text-shadow: 0 1px 0 white;
+}
+form .section > label, form .section > .label {
+margin-top: 14px;
+margin-left: 10px;
+float: left;
+width: 16%;
+}
+
+.section{ float:left;width: 100%;background: #F6F6F6;border-bottom: 1px solid #E7E7E7;
+border-top: 1px solid white;}
+
+form .section > div {
+border-left: 1px solid #E7E7E7;
+float: right;
+width: 307px;
+padding: 0 1%;
+padding-right: 10px;
+
+}
+
+input, label {
+font-size: 12px;
+}
+input {
+width: 300px;
+color: #54616A;
+background:#FFF;
+display: block;
+margin: 10px 0;
+border: 1px solid #C8C8C8;
+border-radius: 5px;
+padding: 5px 0;
+box-shadow: inset 0 2px 3px 0 rgba(18,16,11,0.13);
+outline: 0;
+padding-left:5px;
+}
+
+.box .actions {
+float:left;
+width:100%;
+background:#F7F7F7;
+border-radius: 0 0 3px 3px;
+overflow:hidden;
+}
+.box .actions-left {
+float: left;
+margin: 5px;
+margin-left: 10px;
+}
+.box .actions-right {
+float: right;
+margin: 5px;
+margin-right: 10px;
+}
+
+.box .actions input {
+margin: 0;
+}
+input#remember{ display: inline; margin-right:4px; width:13px;vertical-align: middle; border:none;box-shadow:none;}
+.actions-left label{vertical-align: middle;}
+
+
+.button {
+font:bold 12px/25px Arial, Helvetica, sans-serif;
+color: #222;
+padding: 0 16px;
+outline: 0;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border: 1px solid #C6C6C6;
+text-shadow: 1px 1px 0 #FFFFFF;
+box-shadow:none;
+cursor: pointer;
+border-radius: 3px;
+background: url(../images/grd_a.png) repeat-x 0 center;
+}
+button:hover{ background:none;}
+
+input:hover,input:active,input:focus{border:1px solid #a3a3a3}
+input:active,input:focus{-webkit-box-shadow:inset 0 2px 3px 0 rgba(18,16,11,0.13),0px 0 5px 0 rgba(58,111,163,0.75);-moz-box-shadow:inset 0 2px 3px 0 rgba(18,16,11,0.13),0px 0 5px 0 rgba(58,111,163,0.75);box-shadow:inset 0 2px 3px 0 rgba(18,16,11,0.13),0px 0 5px 0 rgba(58,111,163,0.75)}
+
+
+
+.alert.warning {
+    color: #675100;
+}
+
+.alert.warning {
+    background: url("../images/bg-warning.png") repeat-x scroll 0 0 #FFE68B;
+    border-color: #C9AB40;
+}
+
+.alert {
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+
+.alert {
+    border: 1px solid;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 1px 1px 0 0 rgba(255, 255, 255, 0.65) inset;
+    clear: both;
+    margin-bottom: 9px;
+    margin-top: 10px;
+    padding: 7px 15px 7px 30px;
+    position: relative;
+}
+
+
+.alert.warning span.icon {
+    background: url("../images/exclamation.png") no-repeat scroll 0 0 transparent;
+}
+
+.alert span.icon {
+    display: inline-block;
+    height: 16px;
+    left: 7px;
+    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    width: 16px;
+}
+
+
+input.error{
+	color: #870D0D;
+    border: 1px solid #870D0D;
+    border-radius: 5px 5px 0 0;
+    box-shadow: none;
+    margin-bottom: 0;
+}
+
+label.error.red {
+    color: #FFFFFF !important;
+    text-shadow: 0 1px 1px #460909;
+}
+
+label.error.red {
+    background: url("../images/bg-error.png") repeat-x scroll 0 0 #B13636;
+    border: 1px solid #870D0D;
+    border-radius: 0 0 5px 5px;
+    display: block;
+    margin: 0 0 10px;
+    padding: 5px;
+    position: relative;
+    top: -1px;
+}

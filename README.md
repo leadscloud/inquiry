@@ -56,6 +56,14 @@ define('BLOG_ROOT',dirname(__FILE__));
 ?>
 ```
 
+## 软件截图
+
+![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen01.png?raw=true)
+
+![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen02.png?raw=true)
+
+![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen03.png?raw=true)
+
 ## 联系我
 
 QQ: 75504026

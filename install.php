@@ -225,10 +225,13 @@ CREATE TABLE #@_inquiry_meta (
             'registered' => date('Y-m-d H:i:s',time()),
         ));
         $authcode = authcode($userid);
+        // echo "authcode[".$authcode."]";
+        // echo "pass[".$password."]";
         $user_info = array(
-            'password' => md5($pass.$authcode),
+            'password' => md5($password.$authcode),
             'authcode' => $authcode,
         );
+        // print_r($user_info);
 
         // 更新下密码
         $db->update($db_prefix.'_user', $user_info, array('uid' => $userid));

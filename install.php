@@ -23,6 +23,7 @@ define('DB_FILE',BLOG_ROOT.'/content/'.DB_NAME);
 
 require_once ABS_PATH.'/includes/lib/function.base.php';
 
+
 if (installed()) redirect(ROOT);
 $config_exist = is_file(ABS_PATH.'/config.php');
 
@@ -59,6 +60,7 @@ function parse_phpinfo() {
     }
     return $r;
 }
+
 /**
  * 取得PHPINFO
  *
@@ -92,8 +94,8 @@ function system_phpinfo($info = INFO_ALL) {
 switch($setup) {
 	case 'install':
 			$sql = "
-DROP TABLE IF EXISTS {$db_prefix}_blog;
-CREATE TABLE {$db_prefix}_blog (
+DROP TABLE IF EXISTS #@_blog;
+CREATE TABLE #@_blog (
   gid mediumint(8)  NOT NULL PRIMARY KEY,
   title varchar(255) NOT NULL default '',
   longtitle varchar(255) default '',
@@ -108,8 +110,8 @@ CREATE TABLE {$db_prefix}_blog (
   comnum mediumint(8)  NOT NULL default '0',
   password varchar(255) NOT NULL default ''
 );
-DROP TABLE IF EXISTS {$db_prefix}_user;
-CREATE TABLE {$db_prefix}_user (
+DROP TABLE IF EXISTS #@_user;
+CREATE TABLE #@_user (
   uid INTEGER PRIMARY KEY,
   username varchar(32) NOT NULL default '',
   password varchar(64) NOT NULL default '',
@@ -118,16 +120,16 @@ CREATE TABLE {$db_prefix}_user (
   authcode char(36) NOT NULL,
   email varchar(60) NOT NULL default ''
 );
-DROP TABLE IF EXISTS {$db_prefix}_user_meta;
-CREATE TABLE {$db_prefix}_user_meta (
+DROP TABLE IF EXISTS #@_user_meta;
+CREATE TABLE #@_user_meta (
   `mid` INTEGER PRIMARY KEY,
   `uid` int(10) NOT NULL DEFAULT '0',
   `key` char(50) NOT NULL,
   `value` longtext NOT NULL,
   `type` varchar(10) NOT NULL
 );
-DROP TABLE IF EXISTS {$db_prefix}_inquiry;
-CREATE TABLE {$db_prefix}_inquiry (
+DROP TABLE IF EXISTS #@_inquiry;
+CREATE TABLE #@_inquiry (
   `id` INTEGER PRIMARY KEY,
   `title`	varchar(255),
   `name`	varchar(255),
@@ -150,14 +152,15 @@ CREATE TABLE {$db_prefix}_inquiry (
   `lang`	varchar(255),
   `user_agent`	varchar(255)
 );
-DROP TABLE IF EXISTS {$db_prefix}_inquiry_meta;
-CREATE TABLE {$db_prefix}_inquiry_meta (
+DROP TABLE IF EXISTS #@_inquiry_meta;
+CREATE TABLE #@_inquiry_meta (
   `inquiryid` INTEGER,
   `key` char(50) NOT NULL,
   `value` longtext NOT NULL,
   `type` varchar(10)
 );
 ";
+        $db_name = isset($_POST['dbname'])?$_POST['dbname']:'#inquiry_system.sqlite.php';
 		$db_prefix = isset($_POST['prefix'])?$_POST['prefix']:'';
 		$bing_api = isset($_POST['bing_api'])?$_POST['bing_api']:'';
         $akismet_api  = isset($_POST['akismet_api'])?$_POST['akismet_api']:'';
@@ -168,6 +171,9 @@ CREATE TABLE {$db_prefix}_inquiry_meta (
 		$configs = file(ABS_PATH.'/config.sample.php');
 		foreach ($configs as $num => $line) {
 			switch(substr($line,0,19)) {
+                case "define('DB_NAME','d":
+                    $configs[$num] = str_replace("database_name_here", $db_name, $line);
+                    break;
 				case "define('DB_PREFIX',":
 					$configs[$num] = str_replace("database_prefix_here", $db_prefix, $line);
 					break;
@@ -178,18 +184,27 @@ CREATE TABLE {$db_prefix}_inquiry_meta (
 					$configs[$num] = str_replace("akismet_api_key_here", $akismet_api, $line);
 					break;
 			}
-		}
+        }
 		// 检查是否具有写入权限
 		if ($writable = is_writable(ABS_PATH.'/')) {
 			$config = implode('', $configs);
 			file_put_contents(ABS_PATH.'/config.php', $config);
 		}
+        
+        require_once ABS_PATH.'/includes/lib/function.base.php';
 		
-		
-		$db	=	new db();
-		$db->create_db(DB_FILE);
-		$db->sqlite(DB_FILE,$db_prefix);
-		$db->exec($sql);
+        $db	=	new db();
+        $dbfile = ABS_PATHS . '/content/'. $db_name;
+
+		$db->create_db($dbfile);
+        $db->sqlite($dbfile,$db_prefix);
+        
+        $sql = preg_replace('/#@/',$db_prefix,$sql);
+
+        // print_r($sql);
+
+        $db->exec($sql);
+        // print_r($db);
 		
 
 		$data	=	array(
@@ -199,10 +214,40 @@ CREATE TABLE {$db_prefix}_inquiry_meta (
 						'Administrator' => 'Yes'
 					);
 		
-		$html = '<div class="main"><p>留言系统安装成功！</p><p class="step"><a href="'.ROOT.'" class="button">&laquo; 进入</a></p></div>';
-		if(user_add($adminname,$password,$email,$data)){
-			install_wrapper($html);
-		}
+        $html = '<div class="main"><p>留言系统安装成功！</p><p class="step"><a href="'.ROOT.'" class="button">&laquo; 进入</a></p></div>';
+        
+        $userid = $db->insert($db_prefix.'_user',array(
+            'username' => $adminname,
+            'password' => $password,
+            'email' => $email,
+            'authcode' => '',
+            'status' => 0,
+            'registered' => date('Y-m-d H:i:s',time()),
+        ));
+        $authcode = authcode($userid);
+        $user_info = array(
+            'password' => md5($pass.$authcode),
+            'authcode' => $authcode,
+        );
+
+        // 更新下密码
+        $db->update($db_prefix.'_user', $user_info, array('uid' => $userid));
+
+        // 添加权限
+        foreach ($data as $key=>$value) {
+            $db->insert($db_prefix.'_user_meta',array(
+                'uid' => $userid,
+                'key'    => $key,
+                'value'  => $value,
+                'type'   => "string",
+            ));
+        }
+        
+        install_wrapper($html);
+
+		// if(user_add($adminname,$password,$email,$data)){
+			
+		// }
 		break;
     case 'config':
 		$html = '<form action="'.PHP_FILE.'" method="post" name="setup_cfg" id="setup_cfg">';
@@ -213,7 +258,8 @@ CREATE TABLE {$db_prefix}_inquiry_meta (
         $html.=     '<table class="data-table">';
         $html.=         '<thead><tr><th colspan="3">必填信息</th></tr></thead>';
         $html.=         '<tbody>';
-        $html.=             '<tr><th class="w150"><label for="prefix">数据表前缀</label></th><td><input class="text" type="text" name="prefix" id="prefix" value="com" /></td><td></td></tr>';
+        $html.=             '<tr><th class="w150"><label for="prefix">数据库名</label></th><td><input class="text" type="text" name="dbname" id="dbname" value="#inquiry_system.sqlite.php" /></td><td></td></tr>';
+        $html.=             '<tr><th class="w150"><label for="prefix">数据表前缀</label></th><td><input class="text" type="text" name="prefix" id="prefix" value="wp" /></td><td></td></tr>';
 		$html.=             '<tr><th class="w150"><label for="bing_api">Bing 翻译API Key</label></th><td><input class="text" type="text" name="bing_api" id="bing_api" /></td><td><a href="https://datamarket.azure.com/dataset/1899a118-d202-492c-aa16-ba21c33c06cb" target="_blank">注册地址</a></td></tr>';
 		$html.=             '<tr><th class="w150"><label for="akismet_api">Akismet API Key</label></th><td><input class="text" type="text" name="akismet_api" id="akismet_api" /></td><td><a href="https://akismet.com/signup/" target="_blank">注册地址</a></td></tr>';
         $html.=             '<tr><th><label for="adminname">用户名</label></th><td><input class="text" type="text" name="adminname" id="adminname" /></td><td>管理员账号.</td></tr>';
@@ -234,7 +280,7 @@ CREATE TABLE {$db_prefix}_inquiry_meta (
         install_wrapper($html);
 		break;
 	default:
-		$error_level = error_reporting(0);
+		$error_level = error_reporting(1);
 		$html = '<form action="'.PHP_FILE.'" method="post" name="setup" id="setup">';
         $html.=     '<table class="data-table">';
         $html.=         '<thead><tr><th colspan="3">System Information</th></tr></thead>';

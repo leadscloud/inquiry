@@ -1,12 +1,12 @@
 <?php
 //database name
-define('DB_NAME','#inquiry_system.sqlite.php');
+define('DB_NAME','database_name_here');
 //database prefix
-define('DB_PREFIX','wp');
+define('DB_PREFIX','database_prefix_here');
 //bing translate api key
-define('BING_TRANSLATE_KEY', 'nujIh3e7l8Xs8CkP44xTHwu4Gaw0vV1xzaSgXZ');
+define('ACCOUNT_KEY', 'bing_account_key_here');
 //Akismet API Key
-define('Akismet_API_Key','aaa7ab2fd6e9');
+define('Akismet_API_Key','akismet_api_key_here');
 //system root
 define('BLOG_ROOT',dirname(__FILE__));
 ?>

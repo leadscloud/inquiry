@@ -150,7 +150,8 @@ CREATE TABLE #@_inquiry (
   `browser_version`	varchar(255),
   `browser_platform`	varchar(255),
   `lang`	varchar(255),
-  `user_agent`	varchar(255)
+  `user_agent`	varchar(255),
+  `timezone_offset` int(2)
 );
 DROP TABLE IF EXISTS #@_inquiry_meta;
 CREATE TABLE #@_inquiry_meta (

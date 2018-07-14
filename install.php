@@ -1,4 +1,14 @@
 <?php
+/**********************************************************
+ * Powered by Ray <sbmzhcn@gmail.com>
+ * Blog: https://sbmzhcn.github.io/
+ * 如果有任何安装问题，请联系我 QQ：75504026
+ **********************************************************/
+
+// 显示错误日志用的
+error_reporting(-1);
+ini_set('display_errors', 1);
+
 define('ABS_PATHS',dirname(__FILE__));
 error_reporting(1);
 include dirname(__FILE__).'/defines.php';
@@ -24,8 +34,11 @@ define('DB_FILE',BLOG_ROOT.'/content/'.DB_NAME);
 require_once ABS_PATH.'/includes/lib/function.base.php';
 
 
-if (installed()) redirect(ROOT);
 $config_exist = is_file(ABS_PATH.'/config.php');
+
+if ($config_exist) {
+    if (installed()) redirect(ROOT);
+}
 
 $setup = isset($_POST['setup']) ? $_POST['setup'] : 'default';
 
@@ -185,17 +198,29 @@ CREATE TABLE #@_inquiry_meta (
 					$configs[$num] = str_replace("akismet_api_key_here", $akismet_api, $line);
 					break;
 			}
-        }
-		// 检查是否具有写入权限
+        }		
+        
+        
+        $dbfile = ABS_PATHS . '/content/'. $db_name;
+
+        if(!is_writable($dbfile)) {
+            $error_html = "<p>安装失败，数据库文件目录 $dbfile 没有权限写入。</p>";
+            install_wrapper($error_html);
+            break;
+        }    
+
+        // 检查是否具有写入权限
 		if ($writable = is_writable(ABS_PATH.'/')) {
 			$config = implode('', $configs);
 			file_put_contents(ABS_PATH.'/config.php', $config);
-		}
+        } else { 
+            $error_html = "<p>安装失败，配置文件 $ABS_PATH.'/' 没有权限写入。</p>";
+            install_wrapper($error_html);
+            break;
+        }
         
         require_once ABS_PATH.'/includes/lib/function.base.php';
-		
         $db	=	new db();
-        $dbfile = ABS_PATHS . '/content/'. $db_name;
 
 		$db->create_db($dbfile);
         $db->sqlite($dbfile,$db_prefix);

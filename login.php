@@ -42,6 +42,12 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 
 ?>
+<!--
+欢迎使用本系统，源码地址： https://github.com/sbmzhcn/inquiry
+Powerred by Ray: https://sbmzhcn.github.io
+如果你有什么问题，欢迎在 Github 提问。   
+Add at 2018 
+-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>

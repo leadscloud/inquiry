@@ -184,12 +184,14 @@ $(document).ready(function() {
 		}
 	});
 
+/** 
   document.addEventListener('copy', function(e) {
     //console.log("copy html", e);
     e.clipboardData.setData('text/html', e.text);
     e.clipboardData.setData('text/html', e.target.value);
     e.preventDefault();
   });
+*/
 
   
 	

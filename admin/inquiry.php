@@ -554,7 +554,7 @@ switch ($method) {
                 echo '</tr>';
             }
         } else {
-            echo           '<tr><td colspan="7" class="tc">无项目!</td></tr>';
+            echo           '<tr><td colspan="8" class="tc">无项目!</td></tr>';
         }
         echo           '</tbody>';		
         echo       '</table>';

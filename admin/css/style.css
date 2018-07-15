@@ -25,7 +25,7 @@ a:visited { color: #0B55C4; text-decoration: none; }
 a:hover   { text-decoration: underline; }
 a:hover, a:active, a:focus {color: #D54E21;}
 /* row actions */
-.row-actions { visibility: hidden; }
+.row-actions { visibility: hidden; min-width: 150px;}
 /* number */
 .number{ font-family:Georgia,"Times New Roman","Bitstream Charter",Times,serif; }
 
@@ -74,7 +74,7 @@ a:hover, a:active, a:focus {color: #D54E21;}
 ----------------------------------------------------------------------------------------------------*/
 .data-table{ width:100%; margin-top:5px; margin-bottom:5px; border-collapse:separate; clear:both; border:solid 1px #DFDFDF; -moz-border-radius:4px; -webkit-border-radius:4px; -khtml-border-radius:4px; border-radius:4px; background-color: #F9F9F9; }
 	.data-table tr.alt{background-color: #FCFCFC;}
-	.data-table th { font-weight:bold; }
+	.data-table th { font-weight:bold;  white-space: nowrap; }
 	.data-table th, .data-table td { padding:4px; text-align:left; border:none; border-bottom:solid 1px #DFDFDF; }
     .data-table a{ display:inline-block; }
 	.data-table thead, .data-table tfoot { background:url(../images/blue-grad.png) repeat-x scroll left top; }

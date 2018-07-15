@@ -203,7 +203,7 @@ CREATE TABLE #@_inquiry_meta (
         
         $dbfile = ABS_PATHS . '/content/'. $db_name;
 
-        if(!is_writable($dbfile)) {
+        if(!is_writable(ABS_PATHS . '/content/')) {
             $error_html = "<p>安装失败，数据库文件目录 $dbfile 没有权限写入。</p>";
             install_wrapper($error_html);
             break;

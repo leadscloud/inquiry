@@ -18,6 +18,9 @@
 2. 然后打开install.php, 例如： http://www.yourdomain.com/install.php
 3. 安装完毕会在content目录下生成一个数据库
 
+LNMP一键安装包，需要注意，content文件夹权限问题
+如果你是用root用户上传的文件，需要使用命令 `chown www:www content/`
+
 ## 表单字段说明
 
 具体的字段设置你可以在系统根目录下的updata.php里查看。

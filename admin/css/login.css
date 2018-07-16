@@ -206,3 +206,39 @@ label.error.red {
     position: relative;
     top: -1px;
 }
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+ 
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+    .wrapper {
+        width: 100%;
+        padding-top: 6em;
+    }
+  form .section > label, form .section > .label {
+    width: 100%;
+    float: none;
+    display: block;
+  }
+
+  form .section > div {
+    width: 100%;
+    float: none;
+  }
+
+  .section {
+      padding-left: 10px;
+  }
+  form .section > div {
+      border: none;
+      padding-right: 0;
+  }
+  form .section > label, form .section > .label {
+      margin-left: 5px;
+  }
+ 
+}

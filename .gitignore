@@ -1,5 +1,5 @@
 config.php
-content/
+content/*
 *.zip
 tools/
 admin/temp/

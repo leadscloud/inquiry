@@ -203,7 +203,14 @@ CREATE TABLE #@_inquiry_meta (
         }		
         
         
+        $db_path = ABS_PATHS . '/content/';
         $dbfile = ABS_PATHS . '/content/'. $db_name;
+
+        if (!file_exists($db_path)) {
+            if (!mkdir($db_path)) {
+                die("创建数据库目录失败，请手动创建！". $db_path);
+            }
+        }
 
         if(!is_writable(ABS_PATHS . '/content/')) {
             $error_html = "<p>安装失败，数据库文件目录 $dbfile 没有权限写入。</p>";

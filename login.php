@@ -4,6 +4,7 @@
  * Blog: https://sbmzhcn.github.io/
  * Date: 2018-7-15
  * 如果有任何安装问题，请联系我 QQ：75504026
+ * Chrome扩展:域名所属人 https://sbmzhcn.github.io/serp-analyzer/
  **********************************************************/
 
 require('defines.php');

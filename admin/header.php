@@ -73,7 +73,7 @@ function currents($url){
         </div>
       </li>
 	  
-      <li id="menu-comments" class="head last"><a href="/admin/subscribe.php" class="image"><img src="images/blank.gif" class="os c8" alt="" /></a><a href="subscribe.php" class="text last">订阅管理</a></li>
+      <li id="menu-comments" class="head last"><a href="/admin/subscribe.php" class="image"><img src="images/blank.gif" class="os c8" alt="" /></a><a href="subscribe.php" class="text last">Chrome扩展</a></li>
       <?php 
 	  if(current_user_can('user-list',false)){
 	  ?>

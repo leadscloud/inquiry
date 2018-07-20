@@ -46,7 +46,7 @@ include "../includes/lib/rss.php";
 
 // List of RSS URLs
 $rss_left = array(
-    'http://feed.u148.net/'
+    'https://sbmzhcn.github.io/atom.xml'
 );
 $rss_right = array(
     'http://dig.chouti.com/feed.xml'

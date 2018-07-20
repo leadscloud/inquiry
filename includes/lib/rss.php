@@ -181,6 +181,8 @@ class lastRSS {
 			}
 			// Parse ITEMS
 			preg_match_all("'<item(| .*?)>(.*?)</item>'si", $rss_content, $items);
+			if (empty($items[0]))
+				preg_match_all("'<entry(| .*?)>(.*?)</entry>'si", $rss_content, $items);
 			$rss_items = $items[2];
 			$i = 0;
 			$result['items'] = array(); // create array even if there are no items

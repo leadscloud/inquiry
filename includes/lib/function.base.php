@@ -2016,14 +2016,14 @@ class Pages {
     function query($sql) {
         $csql = preg_replace_callback(
                     '/SELECT (.+) FROM/iU',
-                    create_function('$matches','
-                        if (preg_match(\'/DISTINCT\s*\([^\)]+\)/i\',$matches[1], $match)) {
+                    function ($matches) {
+                        if (preg_match('/DISTINCT\s*\([^\)]+\)/i', $matches[1], $match)) {
                             $field = $match[0];
                         } else {
                             $field = "*";
                         }
                         return sprintf("SELECT COUNT(%s) FROM", $field);
-                    '),
+                    },
                     rtrim($sql, ';'), 1
                 );
         $csql = preg_replace('/\sORDER\s+BY.+$/i', '', $csql, 1);

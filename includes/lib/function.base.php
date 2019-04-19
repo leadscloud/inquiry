@@ -1352,8 +1352,6 @@ function post_get_meta($inquiryid) {
     $inquiryid = intval($inquiryid);
     $rs = $db->query("SELECT * FROM `#@_inquiry_meta` WHERE `inquiryid`={$inquiryid};");
 
-    $row = $db->fetch($rs);
-
     while ($row = $db->fetch($rs)) {
         $result[$row['key']] = is_serialized($row['value']) ? unserialize($row['value']) : $row['value'];
     }

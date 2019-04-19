@@ -2,6 +2,7 @@
 /**********************************************************
  * Powered by Ray <sbmzhcn@gmail.com>
  * Blog: https://sbmzhcn.github.io/
+ * Date: 2018-7-15
  * 如果有任何安装问题，请联系我 QQ：75504026
  **********************************************************/
 
@@ -9,6 +10,7 @@
 error_reporting(-1);
 ini_set('display_errors', 1);
 
+define('INSTALL', true);
 define('ABS_PATHS',dirname(__FILE__));
 error_reporting(1);
 include dirname(__FILE__).'/defines.php';
@@ -191,7 +193,7 @@ CREATE TABLE #@_inquiry_meta (
 				case "define('DB_PREFIX',":
 					$configs[$num] = str_replace("database_prefix_here", $db_prefix, $line);
 					break;
-				case "define('ACCOUNT_KEY":
+				case "define('BING_TRANSL":
 					$configs[$num] = str_replace("bing_account_key_here", $bing_api, $line);
 					break;
 				case "define('Akismet_API":
@@ -201,7 +203,14 @@ CREATE TABLE #@_inquiry_meta (
         }		
         
         
+        $db_path = ABS_PATHS . '/content/';
         $dbfile = ABS_PATHS . '/content/'. $db_name;
+
+        if (!file_exists($db_path)) {
+            if (!mkdir($db_path)) {
+                die("创建数据库目录失败，请手动创建！". $db_path);
+            }
+        }
 
         if(!is_writable(ABS_PATHS . '/content/')) {
             $error_html = "<p>安装失败，数据库文件目录 $dbfile 没有权限写入。</p>";
@@ -240,7 +249,7 @@ CREATE TABLE #@_inquiry_meta (
 						'Administrator' => 'Yes'
 					);
 		
-        $html = '<div class="main"><p>留言系统安装成功！</p><p class="step"><a href="'.ROOT.'" class="button">&laquo; 进入</a></p></div>';
+        $html = '<div class="main"><p>留言系统安装成功！</p><p>请检查根目录下的 reset_admin.php 和 reset_password.php 文件，如果存在请删除！</p><p class="step"><a href="'.ROOT.'" class="button">&laquo; 进入</a></p></div>';
         
         $userid = $db->insert($db_prefix.'_user',array(
             'username' => $adminname,
@@ -271,6 +280,10 @@ CREATE TABLE #@_inquiry_meta (
                 'type'   => "string",
             ));
         }
+
+        //删除一些文件
+        unlink('reset_admin.php');
+        unlink('reset_password.php');
         
         install_wrapper($html);
 
@@ -354,6 +367,7 @@ CREATE TABLE #@_inquiry_meta (
         $html.=             '<tr><td>Iconv Support</td><td>2.0.0+</td><td>'.test_result(function_exists('iconv')).'&nbsp; '.(function_exists('iconv') ? ICONV_VERSION : 'Not Supported').'</td></tr>';
         $html.=             '<tr><td>'.'Multibyte Support'.'</td><td>Support</td><td>'.test_result(extension_loaded('mbstring')).'&nbsp; '.(extension_loaded('mbstring') ? 'mbstring' : 'Not Supported').'</td></tr>';
         $html.=             '<tr><td>Remote URL Open</td><td>Support</td><td>'.test_result(function_exists('curl_init')).'&nbsp; '.(function_exists('curl_init') ? 'Support' : 'Not Supported').'</td></tr>';
+        $html.=             '<tr><td>Database Writable</td><td>Writable</td><td>'.test_result(is_writable(ABS_PATHS . '/content/')).'&nbsp; '.(is_writable(ABS_PATHS . '/content/') ? 'Support' : 'Not Supported').'</td></tr>';
         $html.=         '</tbody>';
         $html.=     '</table>';
         //$html.=     system_phpinfo(INFO_CONFIGURATION | INFO_MODULES);

@@ -12,7 +12,10 @@ header('Access-Control-Allow-Headers:x-requested-with'); // 允许x-requested-wi
 $url_referer = isset($_REQUEST['referer'])?$_REQUEST['referer']:'';
 $http_referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 
-if($http_referer==''&&$url_referer=='') die('Restricted access!');
+if($http_referer=='' && $url_referer=='') {
+	echo '<a href="https://sbmzhcn.github.io/serp-analyzer/" target="_blank">Chrome扩展:域名所属人</a>（可以查看搜索引擎结果页，每个域名是哪个公司，精确到人的名字。）<br>';
+	die('Restricted access!');
+}
 
 require_once BLOG_ROOT.'/includes/lib/function.base.php';
 header('Content-Type: text/html; charset=UTF-8');

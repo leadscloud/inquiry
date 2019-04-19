@@ -1,0 +1,5 @@
+config.php
+content/*
+*.zip
+tools/
+admin/temp/

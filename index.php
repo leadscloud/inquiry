@@ -1,5 +1,4 @@
 <?php
-error_reporting(1);
 require_once 'defines.php';
 require 'includes/lib/function.base.php';
 // 检查是否已配置

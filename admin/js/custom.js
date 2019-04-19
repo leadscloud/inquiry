@@ -160,7 +160,7 @@ Ray.URI.Url  = Ray.URI.Host + Ray.URI.Path + Ray.URI.File;
         });
         return this;
     };
-	
+
 	// 初始化菜单
     $.fn.init_menu = function(){
         var mode  = Ray.setCookie('menu_setting', 'mode'),

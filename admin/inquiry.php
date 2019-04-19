@@ -1,16 +1,11 @@
 <?php
 require_once '../defines.php';
 require_once '../includes/lib/function.base.php';
-error_reporting(1);
 // 文件名
 $php_file = isset($php_file) ? $php_file : PHP_FILE;
 
 
 $_USER = user_current();
-
-error_reporting(E_ALL);
-ini_set('display_errors', TRUE);
-ini_set('display_startup_errors', TRUE);
 
 // 方法
 $method = isset($_REQUEST['method'])?$_REQUEST['method']:null;
@@ -490,7 +485,8 @@ switch ($method) {
 		echo	$inquiry_type=='trash'?'':'<input type="hidden" name="read" value="'.$read.'">';
 		//echo	'<input type="hidden" name="datetime" value="'.date('Y-m-d',$datetime).'">';
 		//echo	'<input type="hidden" name="end_datetime" value="'.date('Y-m-d',$end_datetime).'">';
-        table_nav('top',$page_url);
+				table_nav('top',$page_url);
+				echo      '<div class="table-responsive">';
         echo       '<table class="data-table" cellspacing="0">';
         echo           '<thead>';
         table_thead();
@@ -557,7 +553,8 @@ switch ($method) {
             echo           '<tr><td colspan="8" class="tc">无项目!</td></tr>';
         }
         echo           '</tbody>';		
-        echo       '</table>';
+				echo       '</table>';
+				echo      '</div>';
 
         table_nav('bottom',$page_url);
         echo   '</form>';

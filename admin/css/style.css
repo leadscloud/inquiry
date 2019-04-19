@@ -297,3 +297,48 @@ fieldset.from_company{
 box-shadow: 2px 2px 5px rgba(68,68,68,0.6); 
 }
 
+
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+ 
+}
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+  .wrap {
+    min-width: auto;
+    width: auto;
+  }
+  #admin-content .wrap {
+    min-width: auto;
+  }
+  .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+  .row-actions {
+    visibility: visible;
+  }
+  .data-table tbody td {
+    white-space: nowrap;
+  }
+
+  #admin-content .wrap fieldset {
+    overflow: auto;
+  }
+
+  .wrap .container {
+    width: 99%;
+  }
+
+  #header-menu {
+    top: 13px;
+  }
+  
+ 
+}
+

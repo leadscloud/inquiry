@@ -1140,7 +1140,7 @@ class Cookie {
      */
     function delete($name,$path='/',$domain='') {
         if(empty($domain)) { $domain = COOKIE_DOMAIN; }
-        $this->set($name,'',time()-3600,$path,$domain);
+        $this->set($name,'',1,$path,$domain);
     }
 }
 /**
@@ -2014,6 +2014,17 @@ class Pages {
      * @return mixed
      */
     function query($sql) {
+        /*
+        // 如果提示 Deprecated: Function create_function() is deprecated in， 按下面提示修改
+        function($matches) use ($field) {
+            if (preg_match('/DISTINCT\s*\([^\)]+\)/i', $matches[1], $match)) {
+                $field = $match[0];
+            } else {
+                $field = "*";
+            }
+            return sprintf("SELECT COUNT(%s) FROM", $field);
+        }
+        */
         $csql = preg_replace_callback(
                     '/SELECT (.+) FROM/iU',
                     function ($matches) {

@@ -1,10 +1,13 @@
 <?php
 define('ABS_PATH',dirname(__FILE__));
-include ABS_PATH.'/config.php';
+
 //database name
 //define('DB_NAME','blog_db.sqlite');
 //database prefix
 //define('DB_PREFIX','wp');
+
+// Turn off all error reporting
+error_reporting(1);
 
 
 
@@ -35,6 +38,16 @@ if(!defined('PHP_FILE')) {
 
 define('ROOT',str_replace('\\','/',substr(dirname(PHP_FILE),0,-strlen(substr(realpath('.'),strlen(ABS_PATH)))+1)));
 
+if (!defined("INSTALL") && !is_file(ABS_PATH.'/config.php')) {
+    header("Location: ". ROOT. 'install.php');
+}
+
+include ABS_PATH.'/config.php';
+
 define('DB_PATH',ABS_PATH.'/content/'.DB_NAME);
+
+if (!defined("INSTALL") && !file_exists(DB_PATH)) {
+    die("Database file is not exists! DB Path: " . DB_PATH);
+}
 
 ?>

@@ -1,7 +1,20 @@
 <?php
+/**********************************************************
+ * Powered by Ray <sbmzhcn@gmail.com>
+ * Blog: https://sbmzhcn.github.io/
+ * Date: 2018-7-15
+ * 如果有任何安装问题，请联系我 QQ：75504026
+ * Chrome扩展:域名所属人 https://sbmzhcn.github.io/serp-analyzer/
+ **********************************************************/
+
 require('defines.php');
 require 'includes/lib/function.base.php';
 header('Content-Type: text/html; charset=UTF-8');
+
+// 检查是否已配置
+if (!is_file(ABS_PATH.'/config.php')) {
+    header("Location: ". ROOT. 'install.php');
+}
 
 $error	=	false;
 $message = '';
@@ -14,8 +27,11 @@ if ($method=='logout') {
     redirect('login.php');
 }
 
+// cookie_delete('authcode');
+// cookie_set('testauthcode', "test");
+
 if(user_current(false)){
-			redirect('index.php');		
+	redirect('index.php');		
 }
 	
 if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -53,6 +69,7 @@ Add at 2018
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>登陆页面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel=stylesheet href="admin/css/login.css">
 <script src="admin/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="admin/js/jquery.validate.js"></script>

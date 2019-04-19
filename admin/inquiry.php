@@ -87,7 +87,7 @@ switch ($method) {
 		$title    = $data['title'];
 
 		//meta field
-		$useplace = isset($data['meta']['userplace'])?$data['meta']['userplace']:null;
+		$useplace = isset($data['meta']['useplace'])?$data['meta']['useplace']:null;
 		$products = isset($data['meta']['products'])?$data['meta']['products']:null;
 		$materials = isset($data['meta']['materials'])?$data['meta']['materials']:null;
 		$application = isset($data['meta']['application'])?$data['meta']['application']:null;

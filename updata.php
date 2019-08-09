@@ -13,7 +13,7 @@ $url_referer = isset($_REQUEST['referer'])?$_REQUEST['referer']:'';
 $http_referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 
 if($http_referer=='' && $url_referer=='') {
-	echo '<a href="https://sbmzhcn.github.io/serp-analyzer/" target="_blank">Chrome扩展:域名所属人</a>（可以查看搜索引擎结果页，每个域名是哪个公司，精确到人的名字。）<br>';
+	echo '<a href="https://leadscloud.github.io/serp-analyzer/" target="_blank">Chrome扩展:域名所属人</a>（可以查看搜索引擎结果页，每个域名是哪个公司，精确到人的名字。）<br>';
 	die('Restricted access!');
 }
 

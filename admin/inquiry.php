@@ -566,8 +566,8 @@ switch ($method) {
 function get_true_refer($url){
 	$url = trim($url);
 	
-	//https://sbmzhcn.github.io/livechat/livechat-widgets.html?lng=en&r=https%3A%2F%2Fwww.bing.com%2F&p1=https%3A%2F%2Fwww.ingodsservice.org%2Fcharcoal-kiln-manufacturers-south-afrcia%2F
-	if(strpos($url, "sbmzhcn.github")>0){
+	//https://leadscloud.github.io/livechat/livechat-widgets.html?lng=en&r=https%3A%2F%2Fwww.bing.com%2F&p1=https%3A%2F%2Fwww.ingodsservice.org%2Fcharcoal-kiln-manufacturers-south-afrcia%2F
+	if(strpos($url, "leadscloud.github")>0){
 		$parsed_url = parse_url($url);
 
 		// echo urldecode($parsed_url["query"]);

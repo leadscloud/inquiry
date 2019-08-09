@@ -1,10 +1,10 @@
 <?php
 /**********************************************************
  * Powered by Ray <sbmzhcn@gmail.com>
- * Blog: https://sbmzhcn.github.io/
- * Date: 2018-7-15
+ * Blog: https://leadscloud.github.io/
+ * Date: 2019-8-9
  * 如果有任何安装问题，请联系我 QQ：75504026
- * Chrome扩展:域名所属人 https://sbmzhcn.github.io/serp-analyzer/
+ * Chrome扩展:域名所属人 https://leadscloud.github.io/serp-analyzer/
  **********************************************************/
 
 require('defines.php');
@@ -59,8 +59,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 
 ?>
 <!--
-欢迎使用本系统，源码地址： https://github.com/sbmzhcn/inquiry
-Powerred by Ray: https://sbmzhcn.github.io
+欢迎使用本系统，源码地址： https://github.com/leadscloud/inquiry
+Powerred by Ray: https://leadscloud.github.io
 如果你有什么问题，欢迎在 Github 提问。   
 Add at 2018 
 -->

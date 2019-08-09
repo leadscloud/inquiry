@@ -2,17 +2,17 @@
 set_time_limit(0);
 header('Content-Type: text/html; charset=UTF-8');
 
-    /* Á¬½ÓÑ¡ÔñÊı¾İ¿â */   
+    /* è¿æ¥é€‰æ‹©æ•°æ®åº“ */   
  
 $link = mysql_connect("localhost", "root", "root")        or die("Could not connect");  
   print "Connected successfully";    
 mysql_select_db("keywords") or die("Could not select database");
-    /* Ö´ĞĞ SQL ²éÑ¯ */    
+    /* æ‰§è¡Œ SQL æŸ¥è¯¢ */    
  
 $query = "SELECT url,page_title FROM `contents` where host='grindingmillforsale.com'";   
  $result = mysql_query($query) or die("Query failed");  
  
-  /* ÔÚ HTML ÖĞ´òÓ¡½á¹û */  
+  /* åœ¨ HTML ä¸­æ‰“å°ç»“æœ */  
  
  //print "<table>\n";   
  while ($line = mysql_fetch_array($result, MYSQL_ASSOC)) {        
@@ -25,11 +25,11 @@ print $line->page_title;
  }    
  //print "</table>\n";
  
-    /* ÊÍ·Å×ÊÔ´ */
+    /* é‡Šæ”¾èµ„æº */
     
 //mysql_free_result($result);    
  
-/* ¶Ï¿ªÁ¬½Ó */   
+/* æ–­å¼€è¿æ¥ */   
  
 mysql_close($link);
 ?>

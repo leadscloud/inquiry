@@ -61,19 +61,17 @@ define('BLOG_ROOT',dirname(__FILE__));
 
 ## 软件截图
 
-![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen01.png?raw=true)
+![](https://github.com/leadscloud/inquiry/blob/master/docs/inquiry-screen01.png?raw=true)
 
-![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen02.png?raw=true)
+![](https://github.com/leadscloud/inquiry/blob/master/docs/inquiry-screen02.png?raw=true)
 
-![](https://github.com/sbmzhcn/inquiry/blob/master/docs/inquiry-screen03.png?raw=true)
+![](https://github.com/leadscloud/inquiry/blob/master/docs/inquiry-screen03.png?raw=true)
 
 ## 联系我
 
 QQ: 75504026
 
-Email: love4026@gmail.com
-
-Website: https://sbmzhcn.github.io
+Website: https://leadscloud.github.io
 
 ## 更新
 
@@ -88,6 +86,16 @@ Website: https://sbmzhcn.github.io
 
 * bing翻译使用最新版本，去除之前的翻译
 * 复制按钮使用原生的js即可，不用再使用flash技术了
+
+### 修改数据库
+
+```
+ ALTER TABLE table_name
+  ADD column_1 column-definition,
+      column_2 column-definition,
+      ...
+      column_n column_definition;
+```
 
 
 ## 关键词

@@ -1,8 +1,8 @@
 <?php
 /**********************************************************
  * Powered by Ray <sbmzhcn@gmail.com>
- * Blog: https://sbmzhcn.github.io/
- * Date: 2018-7-15
+ * Blog: https://leadscloud.github.io/
+ * Date: 2019-8-9
  * 如果有任何安装问题，请联系我 QQ：75504026
  **********************************************************/
 
@@ -12,29 +12,10 @@ ini_set('display_errors', 1);
 
 define('INSTALL', true);
 define('ABS_PATHS',dirname(__FILE__));
-error_reporting(1);
+
 include dirname(__FILE__).'/defines.php';
 
-//修改下面的配置以完成安装
-$db_name	=	DB_NAME;
-$db_prefix	=	DB_PREFIX;
-define('DB_FILE',BLOG_ROOT.'/content/'.DB_NAME);
-	
-//define('DB_NAME',   $db_name);
-//define('DB_PREFIX', $db_prefix);
-//define('DB_FILE',$db_file);
-
-/**
- * 
- ALTER TABLE table_name
-  ADD column_1 column-definition,
-      column_2 column-definition,
-      ...
-      column_n column_definition;
- */
-
 require_once ABS_PATH.'/includes/lib/function.base.php';
-
 
 $config_exist = is_file(ABS_PATH.'/config.php');
 

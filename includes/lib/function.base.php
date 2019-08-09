@@ -1299,7 +1299,7 @@ function post_mark($postid,$action = 'noread'){
 
 function replace_message($val){
 
-    if (empty(trim($val))){
+    if (trim($val) == "") {
         return "";
     }
 
@@ -1316,7 +1316,6 @@ function replace_message($val){
         $val_new = substr($val, 0, 6).str_repeat('*', $repeat_count > 0?$repeat_count:0);
     }
 
-    // echo $val_new;
     return $val_new;
 }
 

@@ -147,7 +147,9 @@ CREATE TABLE #@_inquiry (
   `browser_platform`	varchar(255),
   `lang`	varchar(255),
   `user_agent`	varchar(255),
-  `timezone_offset` int(2)
+  `timezone_offset` int(2),
+  INDEX index_read (read),
+  INDEX index_type (type)
 );
 DROP TABLE IF EXISTS #@_inquiry_meta;
 CREATE TABLE #@_inquiry_meta (
@@ -157,6 +159,8 @@ CREATE TABLE #@_inquiry_meta (
   `type` varchar(10)
 );
 ";
+// CREATE INDEX IF NOT EXISTS index_read ON #@_inquiry (read);
+// CREATE INDEX IF NOT EXISTS index_type ON #@_inquiry (type);
         $db_name = isset($_POST['dbname'])?$_POST['dbname']:'#inquiry_system.sqlite.php';
 		$db_prefix = isset($_POST['prefix'])?$_POST['prefix']:'';
 		$bing_api = isset($_POST['bing_api'])?$_POST['bing_api']:'';

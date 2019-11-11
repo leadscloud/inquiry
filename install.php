@@ -147,10 +147,10 @@ CREATE TABLE #@_inquiry (
   `browser_platform`	varchar(255),
   `lang`	varchar(255),
   `user_agent`	varchar(255),
-  `timezone_offset` int(2),
-  INDEX index_read (read),
-  INDEX index_type (type)
+  `timezone_offset` int(2)
 );
+CREATE INDEX IF NOT EXISTS index_read ON #@_inquiry (read);
+CREATE INDEX IF NOT EXISTS index_type ON #@_inquiry (type);
 DROP TABLE IF EXISTS #@_inquiry_meta;
 CREATE TABLE #@_inquiry_meta (
   `inquiryid` INTEGER,

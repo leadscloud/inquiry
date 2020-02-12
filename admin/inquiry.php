@@ -155,7 +155,19 @@ switch ($method) {
             $strip_country = str_replace("CZ88.NET", "",ip2addr($fromip));
         }
         $strip_country = trim($strip_country);
-		echo '<div id="inquiryDetails" style="display:none"><h3>'.$data['time'].'-'.$strip_country.'-'.$data['email'].'</h3> <p>询盘时间:'.$data['time'].'</p><p>来源IP:'.$fromip.'</p><p>国家:'.$country.' &nbsp; '.ip2addr($fromip).'</p><p>来源网站:'.$data['website'].'</p><p>标题:'.$title.'</p><p>姓名:'.$data['name'].'</p><p>邮箱:'.$data['email'].'</p><p>内容:'.$inquiry_content.'</p><p>电话:'.$data['phone'].'</p><p>地址:'.$data['address'].'</p></div>';
+		echo '<div id="inquiryDetails" style="display:none">
+	<h3>'.$data['time'].'-'.$strip_country.'-'.$data['email'].'</h3> 
+	
+	<p>询盘时间:'.$data['time'].'</p>
+	<p>来源IP:'.$fromip.'</p>
+	<p>国家:'.$country.' &nbsp; '.ip2addr($fromip).'</p>
+	<p>来源网站:'.$data['website'].'</p>
+	<p>标题:'.$title.'</p>
+	<p>姓名:'.$data['name'].'</p>
+	<p>邮箱:'.$data['email'].'</p>
+	<p>内容:'.$inquiry_content.'</p>
+	<p>电话:'.$data['phone'].'</p>
+	<p>地址:'.$data['address'].'</p></div>';
 		echo   '<form action="inquiry.php?method=delete&postid="'.$data['id'].' method="post" name="postmanage" id="postmanage">';
 		echo   '<fieldset'.($data['from_company']=='SB'?' class=\"from_sb\"':' class="from_company"').'>';
 		echo       '<table class="form-table">';

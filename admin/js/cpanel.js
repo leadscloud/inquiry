@@ -173,15 +173,31 @@ $(document).ready(function() {
             });
 ***/
 
-	var clipboard = new ClipboardJS('.btn-copy', {
-		target: function(trigger) {
-			//console.log("target", trigger);
-			//return trigger.nextElementSibling;
-		},
-		text: function(trigger) {
-			//console.log("text", trigger);
-			return $("#inquiryDetails").html();
-		}
+	// var clipboard = new ClipboardJS('.btn-copy', {
+	// 	target: function(trigger) {
+	// 		//console.log("target", trigger);
+	// 		//return trigger.nextElementSibling;
+	// 		return $("#inquiryDetails");
+	// 	},
+	// 	text: function(trigger) {
+	// 		//console.log("text", trigger);
+	// 		return $("#inquiryDetails").html();
+	// 	}
+	// });
+
+
+	$(".btn-copy").on("click", function () {
+		// var resultField = document.getElementById("");
+
+		var dt = new clipboard.DT();
+		// new XMLSerializer().serializeToString($("#inquiryDetails").childNodes))
+		dt.setData("text/html", $("#inquiryDetails").html());
+		dt.setData("text/plain", document.getElementById("inquiryDetails").innerText);
+		clipboard.write(dt).then(function () {
+			// resultField.textContent = "success";
+		}, function (err) {
+			// resultField.textContent = err;
+		});
 	});
 
 /** 

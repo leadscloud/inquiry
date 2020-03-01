@@ -54,7 +54,6 @@ function currents($url){
           <dl>
             <dt>控制面板</dt>
             <dd<?=currents('/admin/index.php?method=default');?>><a href="index.php">控制面板</a></dd>
-            <dd<?=currents('/admin/news.php?method=default');?>><a href="news.php">新闻动态</a></dd>
             <dd<?=currents('/admin/profile.php?method=default');?>><a href="profile.php">我的配置</a></dd>
           </dl>
         </div>
@@ -87,7 +86,6 @@ function currents($url){
             <dd<?=currents('/admin/tools.php?method=default');?>><a href="tools.php">工具</a></dd>
             <dd<?=currents('/admin/ban.php?method=default');?>><a href="ban.php">屏蔽IP</a></dd>
             <dd<?=currents('/admin/tools.php?method=ping');?>><a href="tools.php?method=ping">Ping服务</a></dd>
-            <dd<?=currents('/admin/tools.php?method=box');?>><a href="tools.php?method=box">百宝箱</a></dd>
             <dd<?=currents('/admin/export.php?method=default');?>><a href="export.php">导出</a></dd>
             <dd<?=currents('/admin/import.php?method=default');?>><a href="import.php">导入</a></dd>
           </dl>

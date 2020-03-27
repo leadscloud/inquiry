@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	$usercountry	=	isset($_POST['country'])?$_POST['country']:null;
 	$useraddress	=	isset($_POST['address'])?$_POST['address']:null;
 	$fromcompany	=	isset($_POST['from_company'])?$_POST['from_company']:null;
-	$company	=	isset($_POST['company'])?$_POST['company']:null;
+	$company		=	isset($_POST['company'])?$_POST['company']:null;
 
 	$materials		=	isset($_POST['materials'])?$_POST['materials']:null;
 	$application	=	isset($_POST['application'])?$_POST['application']:null;
@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	$products		=	isset($_POST['products'])?$_POST['products']:null;
 	$useplace		=	isset($_POST['useplace'])?$_POST['useplace']:null;
 
-	$imtype		=	isset($_POST['imtype'])?$_POST['imtype']:null;
+	$imtype			=	isset($_POST['imtype'])?$_POST['imtype']:null;
 	$imvalue		=	isset($_POST['imvalue'])?$_POST['imvalue']:null;
 
 	$timezone_offset = isset($_POST['timezone_offset'])?$_POST['timezone_offset']:null;
@@ -100,7 +100,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 		//echo "..".$_SERVER['HTTP_ACCEPT'];
 	  if (is_ajax()) {
         ajax_success($return_json);
-      }else if($_SERVER['HTTP_ACCEPT']=='application/json, text/javascript, */*'){
+      }else if(false !== strpos( $_SERVER['HTTP_ACCEPT'], 'application/json' )){
       	ajax_success($return_json);
       }else{
 		alert_echo($return_info,referer(PHP_FILE));
@@ -109,17 +109,17 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
 	}
 	else
 	{
-		if (is_ajax()) {
-			ajax_error('submit failed');
+		if (is_ajax() || false !== strpos( $_SERVER['HTTP_ACCEPT'], 'application/json' )) {
+			ajax_error(array("code" => 0, "message" => "submit failed"));
 		}else{
-			alert_echo('submit failed !',referer(PHP_FILE));
+			alert_echo('submit failed !', referer(PHP_FILE));
 		}
 	}
 } 
 else 
 {
 	if (is_ajax()) {
-		ajax_error('Parameter is invalid.');
+		ajax_error(array("code" => 0, "message" => "Parameter is invalid."));
     }else{
 		Msg('Parameter is invalid.');
 		//alert_echo($return_info,referer(PHP_FILE));

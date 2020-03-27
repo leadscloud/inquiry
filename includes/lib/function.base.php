@@ -1733,7 +1733,12 @@ function check(){
             }
 			
 			if (!$error) return true;
-			return Msg($error);
+            if (is_ajax()) {
+                ajax_error(array("code" => 0, "message" => $error));
+            } else {
+                return Msg($error);
+            }
+			
 		}
 }
 

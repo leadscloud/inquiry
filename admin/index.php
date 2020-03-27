@@ -92,7 +92,7 @@ $db = get_conn();
             //$actions.= '<span class="delete"><a href="javascript:;" onclick="comment_delete('.$data['cmtid'].')">删除</a></span>';
             		echo            '<div class="comment">';
             		echo                '<div class="comment-wrap">';
-            		echo                    '<span class="author">'.sprintf('From %s', '<cite>'.$post['name'].'</cite>').'</span>';
+            		echo                    '<span class="author">'.sprintf('%s, <cite>%s</cite>', $post['time'], $post['name']).'</span>';
 					echo                    '<span class="author">'.sprintf(' | %s', '<cite>'.$post['email'].'</cite>').'</span>';
 					echo					'<span class="author"> '.ip2addr($post['ip']).'</span>';
             		echo                    '<div class="content">  '.$post['content'].'</div>';

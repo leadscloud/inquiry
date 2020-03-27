@@ -155,14 +155,27 @@ switch ($method) {
             $strip_country = str_replace("CZ88.NET", "",ip2addr($fromip));
         }
         $strip_country = trim($strip_country);
-		echo '<div id="inquiryDetails" style="display:none"><h3>'.$data['time'].'-'.$strip_country.'-'.$data['email'].'</h3> <p>询盘时间:'.$data['time'].'</p><p>来源IP:'.$fromip.'</p><p>国家:'.$country.' &nbsp; '.ip2addr($fromip).'</p><p>来源网站:'.$data['website'].'</p><p>标题:'.$title.'</p><p>姓名:'.$data['name'].'</p><p>邮箱:'.$data['email'].'</p><p>内容:'.$inquiry_content.'</p><p>电话:'.$data['phone'].'</p><p>地址:'.$data['address'].'</p></div>';
+		echo '<div id="inquiryDetails" style="display:none">
+<h3>'.$data['time'].'-'.$strip_country.'-'.$data['email'].'</h3> 
+
+<p>询盘时间: '.$data['time'].'</p>
+<p>来源IP: '.$fromip.'</p>
+<p>国家: '.$country.' &nbsp; '.ip2addr($fromip).'</p>'
+
+. (empty($title) ? "" : "\n<p>标题: $title</p>") . '
+<p>姓名: '.$data['name'].'</p>
+<p>邮箱: '.$data['email'].'</p>
+<p>电话: '.$data['phone'].'</p>
+<p>内容: '.$inquiry_content.'</p>
+<p>来源网站: '.rawurldecode(get_true_refer($data['website'])).'</p>'
+. (empty($data["address"]) ? "" : "\n<p>地址: {$data["address"]}</p>") . '</div>';
 		echo   '<form action="inquiry.php?method=delete&postid="'.$data['id'].' method="post" name="postmanage" id="postmanage">';
 		echo   '<fieldset'.($data['from_company']=='SB'?' class=\"from_sb\"':' class="from_company"').'>';
 		echo       '<table class="form-table">';
 		echo			'<thead class="infos">';
 		echo               '<tr>';
 		//echo                   '<td><label>一般信息 </td>';
-		echo                   '<td colspan="2"><span>来源 IP: <a target="_blank" title="点击查看详细信息" href="http://www.123cha.com/ip/?q='.$fromip.'">'.$fromip.'</a> (检测结果：'.ip2addr($fromip).'  )</span><span>所属国家:'.$country.'</span><span>时间:'.$data['time'].'</span><span>来源网站:'.get_true_refer($data['website']).'</span></td>';
+		echo                   '<td colspan="2"><span>来源 IP: <a target="_blank" title="点击查看详细信息" href="http://www.123cha.com/ip/?q='.$fromip.'">'.$fromip.'</a> (检测结果：'.ip2addr($fromip).'  )</span><span>所属国家:'.$country.'</span><span>时间:'.$data['time'].'</span><span>来源网站:'.rawurldecode(get_true_refer($data['website'])).'</span></td>';
 		echo               '</tr>';
 		echo			'</thead>';
 		echo           '<tbody>';
@@ -212,7 +225,7 @@ switch ($method) {
 		echo               '</tr>';
 		echo               '<tr>';
 		echo                   '<th>来源 <span>(From)</span></th>';
-		echo                   '<td><a href="'.$data['website'].'" target="_blank" title="新窗口打开网站">'.get_true_refer($data['website']).'</a></td>';
+		echo                   '<td><a href="'.$data['website'].'" target="_blank" title="新窗口打开网站">'.rawurldecode(get_true_refer($data['website'])).'</a></td>';
 		echo               '</tr>';
 
 		echo               '<tr>';
@@ -528,7 +541,7 @@ switch ($method) {
           $actions.= '<span class="noread"><a href="?page='.$page['page'].'&action=mark&postid='.$post['id'].'" title="标记为未读">未读</a> | </span>';
 				}
 				if(current_user_can('inquiry-delete',false)){
-					$actions.= '<span class="delete"><a href="?page='.$page['page'].'&action=trash&postid='.$post['id'].'" title="移到垃圾箱">删除</a> | </span>';
+					$actions.= '<span class="delete"><a href="?page='.$page['page'].'&action=trash&postid='.$post['id'].'&read='.$read.'" title="移到垃圾箱">删除</a> | </span>';
 				}else{
 					$actions.= '';
 				}                
@@ -574,7 +587,7 @@ function get_true_refer($url){
 	$url = trim($url);
 	
 	//https://leadscloud.github.io/livechat/livechat-widgets.html?lng=en&r=https%3A%2F%2Fwww.bing.com%2F&p1=https%3A%2F%2Fwww.ingodsservice.org%2Fcharcoal-kiln-manufacturers-south-afrcia%2F
-	if(strpos($url, "leadscloud.github")>0){
+
 		$parsed_url = parse_url($url);
 
 		// echo urldecode($parsed_url["query"]);
@@ -582,10 +595,8 @@ function get_true_refer($url){
 		parse_str($url_query, $parsed_str);
 
 		if(isset($parsed_str["p1"]))
-			return  $parsed_str["p1"] . " (" .$parsed_str["r"] . ")";
+			return  $parsed_str["p1"] .  (!empty($parsed_str["r"]) ? " (" .$parsed_str["r"] . ")" : "");
 		return $url;
-	}
-	return $url;
 	
 }
 

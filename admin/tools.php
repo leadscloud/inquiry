@@ -20,7 +20,7 @@ switch ($method) {
 		system_head('title','百宝箱');
 		echo '<div class="wrap tools">';
 		echo   '<h2>'.system_head('title').'</h2>';
-		echo	'<iframe src="http://mimg.126.com/assist/index.htm" style="width:100%;height:100%;min-height:916px;" frameborder="0" scrolling="no"></iframe>';
+		echo	'<iframe src="https://m.chouti.com/all/hot" style="width:100%;height:100%;min-height:916px;" frameborder="0" scrolling="no"></iframe>';
 		echo '</div>';
 		break;
 	case 'ping':
@@ -64,24 +64,22 @@ switch ($method) {
 
         $useragent = $_SERVER['HTTP_USER_AGENT'];
         $ip        = $_SERVER['REMOTE_ADDR'];
-        $request_url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip=' . $ip . '&format=json';
-        // echo $request_url;
-        $info      = json_decode(file_get_contents($request_url), false);
-        // print_r($info);
-        if (isset($info->ret) && $info->ret == 1) {
-            if ($info->province != $info->city) {
-                $address = $info->country . "," . $info->province . "(" . $info->city . ")  " . $info->district . "  " . $info->desc;
-            } else {
-                $address = $info->country . "," . $info->province . "  " . $info->district . "  " . $info->desc;
-            }
-        } else
-            $address = '地球';
+        // $request_url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?ip=' . $ip . '&format=json';
+        // $info      = json_decode(file_get_contents($request_url), false);
+        // if (isset($info->ret) && $info->ret == 1) {
+        //     if ($info->province != $info->city) {
+        //         $address = $info->country . "," . $info->province . "(" . $info->city . ")  " . $info->district . "  " . $info->desc;
+        //     } else {
+        //         $address = $info->country . "," . $info->province . "  " . $info->district . "  " . $info->desc;
+        //     }
+        // } else
+        //     $address = '地球';
 
 		echo '<div class="wrap tools">';
 		echo   '<h2>'.system_head('title').'</h2>';
 		echo	'<div class="clear"></div>';
 		echo	'<p>你的IP地址为：<b>'.getip().'</b></p>';
-		echo	'<p>你来自：<b>'.$address.'</b></p>';
+		// echo	'<p>你来自：<b>'.$address.'</b></p>';
 		echo	'<p>你的浏览器为：<b>'.browser($useragent).'</b></p>';
 		echo	'<p>你的操作系统为：<b>'.os($useragent).'</b></p>'; 
 		echo    '<form action="'.PHP_FILE.'?method=cleandb" method="post" name="tools" id="tools">';

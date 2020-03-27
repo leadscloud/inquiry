@@ -13,10 +13,10 @@ header('Access-Control-Allow-Headers:*');
 $url_referer = isset($_REQUEST['referer'])?$_REQUEST['referer']:'';
 $http_referer = isset($_SERVER['HTTP_REFERER'])?$_SERVER['HTTP_REFERER']:'';
 
-if($http_referer=='' && $url_referer=='') {
-	echo '<a href="https://leadscloud.github.io/serp-analyzer/" target="_blank">Chrome扩展:域名所属人</a>（可以查看搜索引擎结果页，每个域名是哪个公司，精确到人的名字。）<br>';
-	die('Restricted access!');
-}
+// if($http_referer=='' && $url_referer=='') {
+// 	echo '<a href="https://leadscloud.github.io/serp-analyzer/" target="_blank">Chrome扩展:域名所属人</a>（可以查看搜索引擎结果页，每个域名是哪个公司，精确到人的名字。）<br>';
+// 	die('Restricted access!');
+// }
 
 require_once BLOG_ROOT.'/includes/lib/function.base.php';
 header('Content-Type: text/html; charset=UTF-8');
@@ -92,15 +92,16 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
       array('content','VALIDATE_LENGTH','The content field length must be %d-%d characters.',5,2000)
     ));
 	
-		$return_info	=	isset($_POST['return_msg'])?$_POST['return_msg']:'Thanks for your submit. We will response as soon as possible!'; 
+	$return_info	=	isset($_POST['return_msg'])?$_POST['return_msg']:'Thanks for your submit. We will response as soon as possible!';
+	$return_json = array("code" => 1, "message" => $return_info);
 	
 	if(inquiry_add($title,$username,$useremail,$userinquiry,$userphone,$usercountry,$useraddress,$fromcompany,array_map("process_array",$metadata)))
 	{ 
 		//echo "..".$_SERVER['HTTP_ACCEPT'];
 	  if (is_ajax()) {
-        ajax_success($return_info);
+        ajax_success($return_json);
       }else if($_SERVER['HTTP_ACCEPT']=='application/json, text/javascript, */*'){
-      	ajax_success($return_info);
+      	ajax_success($return_json);
       }else{
 		alert_echo($return_info,referer(PHP_FILE));
 	  }

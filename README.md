@@ -69,7 +69,9 @@ define('BLOG_ROOT',dirname(__FILE__));
 
 ## 联系我
 
+
 关于的系统的方面的问题，请在github的[issue](/../../issues)中提交。
+
 
 ~~QQ: 75504026~~
 

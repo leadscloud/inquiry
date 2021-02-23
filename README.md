@@ -69,7 +69,9 @@ define('BLOG_ROOT',dirname(__FILE__));
 
 ## 联系我
 
-QQ: 75504026
+关于的系统的方面的问题，请在github的[issue](/../../issues)中提交。
+
+~~QQ: 75504026~~
 
 Website: https://leadscloud.github.io
 
@@ -77,7 +79,6 @@ Website: https://leadscloud.github.io
 
 ### 2018-7-15
 
-* 2018世办杯决赛 法国 vs 克罗地亚 目前 4:2
 * 修改安装的一些逻辑判断的问题
 * 留言内容复制功能导致默认的复制功能不能用的问题
 * 其它一些样式的小问题

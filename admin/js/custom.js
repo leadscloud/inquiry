@@ -1,6 +1,9 @@
 /**
  *
- *张雷于2011年1月19日 修改
+ * 外贸留言板系统
+ * sbmzhcn@gmail.com
+ * https://leadscloud.github.io/
+ * 
  */
 var Ray = window.Ray  = {
     // javascript libaray version
@@ -91,8 +94,6 @@ Ray.URI.Url  = Ray.URI.Host + Ray.URI.Path + Ray.URI.File;
 /**
  * jQuery 扩展
  *
- * @author: Lukin<my@lukin.cn>
- * @date:   2010/1/21 17:11
  */
 (function ($) {
  

@@ -30,8 +30,6 @@ define('VALIDATE_HAVE_LINK','HAVE_LINK');
 /**
  * 系统验证类
  *
- * @author  Lukin <my@lukin.cn>
- * @version $Id: validate.php 673 2010-11-28 17:04:33Z mylukin $
  */
 class Validate {
     // private

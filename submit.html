@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Purchase - Fill out the form below</title>
-<link href="purchase.css" rel="stylesheet" type="text/css">
+<title>Inquiry - Fill out the form below</title>
 
 </head>
 <body>
@@ -80,5 +79,20 @@
 </table>
 </form>
 <a href="updata.php">test</a>
+<script>
+  // 随机表单内容
+  function $(selector) {
+    return document.querySelector(selector);
+  }
+  $('input[name="application"]').value = 'concrete';
+  $('input[name="capacity"]').value = '300TPH';
+  $('input[name="products"]').value = 'sand making machine';
+  $('input[name="title"]').value = 'inquiry message title';
+  $('input[name="name"]').value = 'Ray';
+  $('input[name="email"]').value = 'sbmzhcn@gmail.com';
+  $('input[name="phone"]').value = '12345678';
+  $('textarea').value = 'this is a inquiry message test. if you have any question, pls contact with sbmzhcn@gmail.com';
+
+</script>
 </body>
 </html>

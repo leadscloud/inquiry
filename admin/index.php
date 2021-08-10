@@ -1,4 +1,16 @@
 <?php
+/**************************************************************
+ * 
+ * 外贸留言板系统 
+ * 
+ * 如果你使用此系统，请保留版本声明。
+ * 
+ * Copyright (c) Ray
+ * Email: <sbmzhcn@gmail.com>
+ * Website: https://leadscloud.github.io/
+ * 
+ ***************************************************************/
+
 require_once '../defines.php';
 require_once '../includes/lib/function.base.php';
 header('Content-Type: text/html; charset=UTF-8');
@@ -41,14 +53,16 @@ $db = get_conn();
         echo            '<h3>服务器环境</h3>';
         echo            '<div class="inside server-env">';
         echo                '<p><label>服务器系统：</label>'.PHP_OS .' '. php_uname('r') .' On '. php_uname('m').'</p>';
+        echo                '<p><label>服务器主机：</label>'.$_SERVER['SERVER_ADDR'] .' ('. gethostbyaddr($_SERVER['REMOTE_ADDR']) .')</p>';
         echo                '<p><label>服务器软件：</label>'.$_SERVER['SERVER_SOFTWARE'].'</p>';
         echo                '<p><label>服务器 API： </label>'.PHP_SAPI.'</p>';
+        echo                '<p><label>服务器剩余空间：</label>'.round((disk_free_space(".")/(1024*1024)),2).'M</p>';
         echo                '<p><label>系统版本：</label><span class="version">'.SYS_VERSION.'</span></p>';
         echo                '<p><label>PHP版本：</label>'.PHP_VERSION.'&nbsp; '.test_result(version_compare(PHP_VERSION,'4.3.3','>')).'</p>';
         echo                '<p><label>SQLITE版本： </label>'.$db->getServerVersion().'&nbsp; '.test_result(version_compare($db->getServerVersion(),'3.7.7','>')).'</p>';
-        echo                '<p><label>图形绘制库： </label>'.(function_exists('gd_info') ? GD_VERSION : __('Not Supported')).'&nbsp; '.test_result(function_exists('gd_info')).'</p>';
-        echo                '<p><label>字符集转换：</label>'.(function_exists('iconv') ? ICONV_VERSION : __('Not Supported')).'&nbsp; '.test_result(function_exists('iconv')).'</p>';
-        echo                '<p><label>多字节字符串：</label>'.(extension_loaded('mbstring') ? 'mbstring' : __('Not Supported')).'&nbsp; '.test_result(extension_loaded('mbstring')).'</p>';
+        echo                '<p><label>图形绘制库： </label>'.(function_exists('gd_info') ? GD_VERSION : 'Not Supported').'&nbsp; '.test_result(function_exists('gd_info')).'</p>';
+        echo                '<p><label>字符集转换：</label>'.(function_exists('iconv') ? ICONV_VERSION : 'Not Supported').'&nbsp; '.test_result(function_exists('iconv')).'</p>';
+        echo                '<p><label>多字节字符串：</label>'.(extension_loaded('mbstring') ? 'mbstring' : 'Not Supported').'&nbsp; '.test_result(extension_loaded('mbstring')).'</p>';
         echo            '</div>';
         echo        '</fieldset>';
         echo        '<fieldset>';

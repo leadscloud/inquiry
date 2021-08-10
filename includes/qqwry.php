@@ -1,11 +1,16 @@
 <?php
-/*defined('COM_PATH') or die('Restricted access!');*/
-/**
- * IP地理位置解析
- *
- * @author  Lukin <my@lukin.cn>
- * @version $Id: qqwry.php 673 2010-11-28 17:04:33Z mylukin $
- */
+/**************************************************************
+ * 
+ * 外贸留言板系统 
+ * 
+ * 如果你使用此系统，请保留版本声明。
+ * 
+ * Copyright (c) Ray
+ * Email: <sbmzhcn@gmail.com>
+ * Website: https://leadscloud.github.io/
+ * 
+ ***************************************************************/
+
 class QQWry {
     var $_fp = null;
     var $_start = 0, $_end = 0, $_ctype = 0;

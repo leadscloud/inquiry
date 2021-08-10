@@ -1,8 +1,6 @@
 /**
  * jQuery 扩展
  *
- * @author  Lukin <my@lukin.cn>
- * @version $Id: jquery.extend.js 673 2010-11-28 17:04:33Z mylukin $
  */
 (function ($) {
     /**

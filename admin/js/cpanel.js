@@ -149,41 +149,6 @@ $(document).ready(function() {
 	
 	$('#password1').val('').keyup( user_check_pass_strength );
     $('#password2').val('').keyup( user_check_pass_strength );
-	
-/*** 
-		ZeroClipboard.setMoviePath( 'js/ZeroClipboard10.swf' );
-		clip = new ZeroClipboard.Client();
-			clip.setHandCursor( true );
-				// update the text on mouse over
-			var txt="";
-			txt=$("#inquiryDetails").html();
-			clip.setText(txt);
-			clip.glue( 'd_clip_button', 'd_clip_container' );
-			//clip.glue( 'd_clip_button2', 'd_clip_container2' );
-			clip.addEventListener('complete', function(client) {
-                showcpmsgstr("复制成功！");
-            });
-			
-		clip2 = new ZeroClipboard.Client();
-		clip2.setHandCursor( true );
-		clip2.setText(txt);
-		clip2.glue( 'd_clip_button2', 'd_clip_container2' );
-		clip2.addEventListener('complete', function(client) {
-                showcpmsgstr("复制成功！");
-            });
-***/
-
-	// var clipboard = new ClipboardJS('.btn-copy', {
-	// 	target: function(trigger) {
-	// 		//console.log("target", trigger);
-	// 		//return trigger.nextElementSibling;
-	// 		return $("#inquiryDetails");
-	// 	},
-	// 	text: function(trigger) {
-	// 		//console.log("text", trigger);
-	// 		return $("#inquiryDetails").html();
-	// 	}
-	// });
 
 
 	$(".btn-copy").on("click", function () {
@@ -199,16 +164,6 @@ $(document).ready(function() {
 			// resultField.textContent = err;
 		});
 	});
-
-/** 
-  document.addEventListener('copy', function(e) {
-    //console.log("copy html", e);
-    e.clipboardData.setData('text/html', e.text);
-    e.clipboardData.setData('text/html', e.target.value);
-    e.preventDefault();
-  });
-*/
-
   
 	
 		

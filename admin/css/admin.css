@@ -15,9 +15,9 @@ input,body{font-family:Tahoma,Arial, Helvetica, sans-serif,"Microsoft Yahei";}
 
 /* Header
 ----------------------------------------------------------------------------------------------------*/
-#header {width:100%; height:50px; margin:0; display:block; clear:both; background:#eff8ff url(../images/lazyadmin-bgs.png) repeat-x 0 -5px;border-bottom:1px solid #c6d9e7; color:#333333; text-align:left;}
+#header {width:100%; height:50px; margin:0; display:block; clear:both; background:#eff8ff url(../images/admin-bgs.png) repeat-x 0 -5px;border-bottom:1px solid #c6d9e7; color:#333333; text-align:left;}
     #header a{ color:#333333;}
-    #header-logo{ padding:0 5px 0 10px; float:left; text-align:left;}
+    #header-logo{ padding:0 5px 0 10px; float:left; text-align:left; width: 30px;height: 100%;}
     #header-visit{ height:50px; float:left; margin:0; font-size:16px; line-height:50px;}
     #header-visit a{ display:block; text-decoration: none; }
 	#header-visit span{ display:inline-block; cursor:pointer; }
@@ -157,3 +157,15 @@ input,body{font-family:Tahoma,Arial, Helvetica, sans-serif,"Microsoft Yahei";}
     #footer p { margin:0; padding:7px 0; display:inline-block; color:#666666; }
     #footer-left { padding-left:15px !important; }
     #footer-upgrade { padding-right:10px !important; }
+
+/* Promotion */
+
+.promotion ul {
+	list-style-type: square;
+}
+
+.promotion li {
+	line-height: 2;
+	font-size: 15px;
+	list-style-type: square;
+}

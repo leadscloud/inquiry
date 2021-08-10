@@ -214,7 +214,7 @@ CREATE TABLE #@_inquiry_meta (
         }
         
         require_once ABS_PATH.'/includes/lib/function.base.php';
-        $db	=	new db();
+        $db	=	new db($dbfile, $db_prefix);
 
 		$db->create_db($dbfile);
         $db->sqlite($dbfile,$db_prefix);
@@ -267,8 +267,8 @@ CREATE TABLE #@_inquiry_meta (
         }
 
         //删除一些文件
-        unlink('reset_admin.php');
-        unlink('reset_password.php');
+        // unlink('reset_admin.php');
+        // unlink('reset_password.php');
         
         install_wrapper($html);
 

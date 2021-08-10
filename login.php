@@ -1,10 +1,13 @@
 <?php
+
 /**********************************************************
+ * 
  * Powered by Ray <sbmzhcn@gmail.com>
  * Blog: https://leadscloud.github.io/
  * Date: 2019-8-9
  * 如果有任何安装问题，请联系我 QQ：75504026
  * Chrome扩展:域名所属人 https://leadscloud.github.io/serp-analyzer/
+ * 
  **********************************************************/
 
 require('defines.php');
@@ -12,194 +15,185 @@ require 'includes/lib/function.base.php';
 header('Content-Type: text/html; charset=UTF-8');
 
 // 检查是否已配置
-if (!is_file(ABS_PATH.'/config.php')) {
-    header("Location: ". ROOT. 'install.php');
+if (!is_file(ABS_PATH . '/config.php')) {
+  header("Location: " . ROOT . 'install.php');
 }
 
-$error	=	false;
+$error  =  false;
 $message = '';
 $error_num = 0;
 
 // 退出登录
-$method = isset($_GET['method'])?$_GET['method']:null;
-if ($method=='logout') {
-    cookie_delete('authcode');
-    redirect('login.php');
+$method = isset($_GET['method']) ? $_GET['method'] : null;
+if ($method == 'logout') {
+  cookie_delete('authcode');
+  redirect('login.php');
 }
 
 // cookie_delete('authcode');
 // cookie_set('testauthcode', "test");
 
-if(user_current(false)){
-	redirect('index.php');		
-}
-	
-if($_SERVER['REQUEST_METHOD']=='POST'){
-	$username   = isset($_POST['username'])?$_POST['username']:null;
-    $userpass   = isset($_POST['password'])?$_POST['password']:null;
-    $rememberme = isset($_POST['autologin'])?'forever':null;
-	
-	
-		
-	if ($user = user_login($username,$userpass)) { 
-            $expire   = $rememberme=='forever' ? 365*86400 : 0;
-            cookie_set('authcode',$user['authcode'],$expire);
-			//echo '123213';
-            redirect('admin/index.php');
-        } else {
-			$error	=	true;
-			$error_num++;
-			$message	=	"用户名或密码错误，请重试！";
-        }
-	if($error_num>=3){
-		$message	=	"3次密码错误 ，该用户名已被锁定！";
-	}
+if (user_current(false)) {
+  redirect('index.php');
 }
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  $username   = isset($_POST['username']) ? $_POST['username'] : null;
+  $userpass   = isset($_POST['password']) ? $_POST['password'] : null;
+  $rememberme = isset($_POST['autologin']) ? 'forever' : null;
+
+
+
+  if ($user = user_login($username, $userpass)) {
+    $expire   = $rememberme == 'forever' ? 365 * 86400 : 0;
+    cookie_set('authcode', $user['authcode'], $expire);
+    //echo '123213';
+    redirect('admin/index.php');
+  } else {
+    $error  =  true;
+    $error_num++;
+    $message  =  "用户名或密码错误，请重试！";
+  }
+  if ($error_num >= 3) {
+    $message  =  "3次密码错误 ，该用户名已被锁定！";
+  }
+}
 
 ?>
 <!--
 欢迎使用本系统，源码地址： https://github.com/leadscloud/inquiry
-Powerred by Ray: https://leadscloud.github.io
+Powered by Ray: https://leadscloud.github.io
 如果你有什么问题，欢迎在 Github 提问。   
-Add at 2018 
+
+--2021年更新
 -->
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>登陆页面</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel=stylesheet href="admin/css/login.css">
-<script src="admin/js/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="admin/js/jquery.validate.js"></script>
-<meta name='robots' content='noindex,nofollow' />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>登录 - 外贸留言询盘系统</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/logo.svg">
+  <link rel=stylesheet href="admin/css/login.css">
+  <link rel=stylesheet href="admin/css/icomoon.css">
+  <script src="admin/js/jquery-1.7.1.min.js"></script>
 </head>
-<body class="bg_c">
-<div class=top>
-  <div class=gradient></div>
-  <div class=white></div>
-  <div class=shadow></div>
-</div>
-<div class=content>
-  <h1>系统登陆界面</h1>
-  <div class=background></div>
-  <div class=wrapper>
-    <div class="box">
-      <div class="header grey"> <img src="admin/images/lock.png" width=16 height=16 alt="lock" />
-        <h3>登陆</h3>
+
+<body>
+  <div class="limiter">
+    <div class="container-login">
+      <div class="wrap-login p-l-85 p-r-85 p-t-55 p-b-55">
+        <form method="POST" action="login.php" class="login-form validate-form flex-sb flex-w">
+
+          <!-- <div class="icon">
+            <img src="/logo.svg" alt="外贸留言板系统" width="50" />
+          </div> -->
+          <span class="login-form-title p-b-32">
+            账号登录
+          </span>
+          <span class="txt1 p-b-11">
+            用户名
+          </span>
+          <div class="wrap-input validate-input m-b-36" data-validate="请填写用户名">
+            <input class="input" type="text" name="username">
+            <span class="focus-input"></span>
+          </div>
+          <span class="txt1 p-b-11">
+            密码
+          </span>
+          <div class="wrap-input validate-input m-b-12 <?php echo $error ? "alert-validate" : "$error"; ?>" data-validate="<?php echo empty($message) ? '请输入密码': $message; ?>">
+            <span class="btn-show-pass">
+              <i class="icon-eye"></i>
+            </span>
+            <input class="input" type="password" name="password">
+            <span class="focus-input"></span>
+          </div>
+          <div class="flex-sb-m w-full p-b-48">
+            <div class="contact-form-checkbox">
+              <input class="input-checkbox" id="ckb1" type="checkbox" name="autologin">
+              <label class="label-checkbox" for="ckb1">
+                记住我
+              </label>
+            </div>
+            <div>
+              <a href="#" class="txt3">
+                忘记密码?
+              </a>
+            </div>
+          </div>
+          <div class="container-login-form-btn">
+            <button class="login-form-btn" type="submit">
+              登录
+            </button>
+          </div>
+        </form>
       </div>
-      <form method="POST" action="login.php">
-        <div class="content no-padding">
-        <?php
-		if($error){
-			echo '<div style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; border-left-style: none; border-left-width: initial; border-left-color: initial; border-right-style: none; border-right-width: initial; border-right-color: initial; border-top-left-radius: 0px 0px; border-top-right-radius: 0px 0px; border-bottom-right-radius: 0px 0px; border-bottom-left-radius: 0px 0px; " class="alert warning top .generated"><span class="icon"></span>'.$message.'</div>';
-		}
-			 
-		?>
-          <div class="section">
-            <label> 用户名 </label>
-            <div>
-              <input name="username" class="required">
-            </div>
-          </div>
-          <div class="section _100">
-            <label> 密码 </label>
-            <div>
-              <input name="password" type="password" class="required">
-            </div>
-          </div>
-        </div>
-        <div class=actions>
-          <div class="actions-left" style="margin-top: 8px;">
-           
-              <input name="autologin" type="checkbox" id="remember" />
-               <label for=newsletter>记住我 </label>
-          </div>
-          <div class=actions-right>
-            <button type="submit" class="button">登陆</button>
-          </div>
-        </div>
-      </form>
+
+      <div class="copy-right">
+		    <p> © 2010-2021 外贸留言板系统. 版权所有. | Powered by <a href="http://leadscloud.github.io/">sbmzhcn</a>, <a href="https://github.com/leadscloud/inquiry">源码</a></p>
+	    </div>
     </div>
-    <div class="shadow"></div>
   </div>
-</div>
 
-
-<script>
-(function (a) {
-    a.fn.alertBox = function (c, d) {
-        var b = a.extend({}, a.fn.alertBox.defaults, d);
-        this.each(function () {
-            var d = a(this),
-                e = "alert " + b.type;
-            b.noMargin && (e += " no-margin");
-            b.position && (e += " " + b.position);
-            e = a('<div style="display:none" class="' + e + ' .generated">' + c + "</div>");
-            b.icon && e.prepend(a("<span>").addClass("icon"));
-            d.prepend(e);
-            a(e).fadeIn()
-        })
-    };
-    a.fn.alertBox.defaults = {
-        type: "info",
-        position: "top",
-        noMargin: !0,
-        icon: !1
+  <script>
+    (function($) {
+      "use strict";
+      var input = $('.validate-input .input');
+      $('.validate-form').on('submit', function() {
+          var check = true;
+          for (var i = 0; i < input.length; i++) {
+              if (validate(input[i]) == false) {
+                  showValidate(input[i]);
+                  check = false;
+              }
+          }
+          return check;
+      });
+      $('.validate-form .input').each(function() {
+          $(this).focus(function() {
+              hideValidate(this);
+          });
+      });
+      function validate(input) {
+          if ($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
+              if ($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
+                  return false;
+              }
+          } else {
+              if ($(input).val().trim() == '') {
+                  return false;
+              }
+          }
+      }
+      function showValidate(input) {
+          var thisAlert = $(input).parent();
+          $(thisAlert).addClass('alert-validate');
+      }
+      function hideValidate(input) {
+          var thisAlert = $(input).parent();
+          $(thisAlert).removeClass('alert-validate');
+      }
+      var showPass = 0;
+      $('.btn-show-pass').on('click', function() {
+          if (showPass == 0) {
+              $(this).next('input')[0].setAttribute("type", 'text');
+              // $(this).next('input').attr('type', 'text');
+              $(this).find('i').removeClass('icon-eye');
+              $(this).find('i').addClass('icon-eye-slash');
+              showPass = 1;
+          } else {
+              $(this).next('input')[0].setAttribute("type", 'password');
+              // $(this).next('input').attr('type', 'password');
+              $(this).find('i').removeClass('icon-eye-slash');
+              $(this).find('i').addClass('icon-eye');
+              showPass = 0;
+          }
+      });
     }
-})(jQuery);
-(function (a) {
-    a.fn.removeAlertBoxes = function () {
-        a(this).find(".alert").fadeOut(function () {
-            a(this).remove()
-        })
-    }
-})(jQuery);
-$(window).load(function() {
-    var a = $("form").validate({
-        invalidHandler: function(d, b) {
-            var e = b.numberOfInvalids();
-            if (e) {
-                var c = e == 1 ? "You missed 1 field. It has been highlighted." : "You missed " + e + " fields. They have been highlighted.";
-                $(".box .content").removeAlertBoxes();
-                $(".box .content").alertBox(c, {
-                    type: "warning",
-                    icon: true,
-                    noMargin: false
-                });
-                $(".box .content .alert").css({
-                    width: "",
-                    margin: "0",
-                    borderLeft: "none",
-                    borderRight: "none",
-                    borderRadius: 0
-                })
-            } else {
-                $(".box .content").removeAlertBoxes()
-            }
-        },
-        showErrors: function(c, d) {
-            this.defaultShowErrors();
-            var b = this;
-            $.each(d, function() {
-                var f = $(this.element);
-                var e = f.parent().find("label.error");
+    )(jQuery);
 
-                e.addClass("red");
-                e.css("width", parseFloat(e.css("widthExact")) - 10 + "px");
-                f.trigger("labeled");
-                e.fadeIn()
-            })
-        },
-        submitHandler: function(b) {
-            $(form).submit();
-        }
-    })
-	
-});
-</script>
-
- <!--[if lt IE 7 ]><script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script> <script defer>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})});</script><![endif]-->
+  </script>
 </body>
+
 </html>

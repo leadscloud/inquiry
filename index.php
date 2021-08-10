@@ -1,4 +1,16 @@
 <?php
+/**************************************************************
+ * 
+ * 外贸留言板系统 
+ * 
+ * 如果你使用此系统，请保留版本声明。
+ * 
+ * Copyright (c) Ray
+ * Email: <sbmzhcn@gmail.com>
+ * Website: https://leadscloud.github.io/
+ * 
+ ***************************************************************/
+
 require_once 'defines.php';
 require 'includes/lib/function.base.php';
 // 检查是否已配置

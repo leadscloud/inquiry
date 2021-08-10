@@ -23,6 +23,7 @@ function currents($url){
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo esc_html(strip_tags(system_head('title')));?> 询盘管理系统</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="/logo.svg">
 <link rel="stylesheet" type="text/css" href="css/common/reset.css"/>
 <link rel="stylesheet" type="text/css" href="css/common/common.css"/>
 <link rel="stylesheet" type="text/css" href="css/admin.css"/>
@@ -42,7 +43,7 @@ function currents($url){
 
 <body class="index-php">
 <div id="wrapper">
-  <div id="header"> <img id="header-logo" src="images/logo.png" alt="询盘管理系统SQLite版" />
+  <div id="header"> <img id="header-logo" src="/logo.svg" alt="询盘管理系统SQLite版" />
     <h1 id="header-visit"> <a href="/"> <span>询盘管理系统</span> <em>V<?php echo SYS_VERSION; ?></em> </a> </h1>
     <div id="header-menu"><strong><a href="profile.php"><?php echo  $_USER['nickname']?$_USER['nickname']:$_USER['username']; ?></a></strong> | <a href="/login.php?method=logout" onclick="return $(this).logout();">退出</a> </div>
   </div>
@@ -72,7 +73,7 @@ function currents($url){
         </div>
       </li>
 	  
-      <li id="menu-comments" class="head last"><a href="/admin/subscribe.php" class="image"><img src="images/blank.gif" class="os c8" alt="" /></a><a href="subscribe.php" class="text last">Chrome扩展</a></li>
+      <li id="menu-comments" class="head last"><a href="/admin/promotion.php" class="image"><img src="images/blank.gif" class="os c8" alt="" /></a><a href="promotion.php" class="text last">推广</a></li>
       <?php 
 	  if(current_user_can('user-list',false)){
 	  ?>

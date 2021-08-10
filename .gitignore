@@ -3,3 +3,5 @@ content/*
 *.zip
 tools/
 admin/temp/
+reset_password.php
+reset_admin.php

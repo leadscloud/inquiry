@@ -1,4 +1,15 @@
 <?php
+/**************************************************************
+ * 
+ * 外贸留言板系统 
+ * 
+ * 如果你使用此系统，请保留版本声明。
+ * 
+ * Copyright (c) Ray
+ * Email: <sbmzhcn@gmail.com>
+ * Website: https://leadscloud.github.io/
+ * 
+ ***************************************************************/
 require_once '../defines.php';
 require_once '../includes/lib/function.base.php';
 // 文件名
@@ -48,14 +59,13 @@ switch ($method) {
 	    break;
 	// 查看
 	case 'view':
-	
 		
-		require_once('translate/config.inc.php');
-		require_once('translate/class/ServicesJSON.class.php');
-		require_once('translate/class/MicrosoftTranslator.class.php');
+		// require_once('translate/config.inc.php');
+		// require_once('translate/class/ServicesJSON.class.php');
+		// require_once('translate/class/MicrosoftTranslator.class.php');
 
 
-		$translator = new MicrosoftTranslator(ACCOUNT_KEY);
+		// $translator = new MicrosoftTranslator(ACCOUNT_KEY);
 		//$selectbox = array('id'=> 'txtLang','name'=>'txtLang');
 		//$translator->getLanguagesSelectBox($selectbox);
 		//echo 'test '.$translator->testGet();

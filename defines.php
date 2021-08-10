@@ -1,12 +1,23 @@
 <?php
+/**************************************************************
+ * 
+ * 外贸留言板系统 
+ * 
+ * 如果你使用此系统，请保留版本声明。
+ * 
+ * Copyright (c) Ray
+ * Email: <sbmzhcn@gmail.com>
+ * Website: https://leadscloud.github.io/
+ * 
+ ***************************************************************/
+
 define('ABS_PATH',dirname(__FILE__));
 
-//database name
-//define('DB_NAME','blog_db.sqlite');
-//database prefix
-//define('DB_PREFIX','wp');
 
-// Turn off all error reporting
+defined('DB_NAME') or define('DB_NAME', '#inquiry_system.sqlite.php');
+defined('DB_PREFIX') or define('DB_PREFIX', 'wp');
+
+// Turn on or off all error reporting
 error_reporting(1);
 
 

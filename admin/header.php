@@ -129,7 +129,7 @@ function currents($url){
 			<div id="contextual-help-wrap" class="hidden">
 				<div id="contextual-help-back"></div>
                 <div class="metabox-prefs">
-                <p>如果有任何问题，请联系 sbmzhcn@gmail.com 或 love4026@gmail.com 。 2018年以后请在 Github 上面提问。 <a href="https://github.com/leadscloud/inquiry/issues"  target="_blank">https://github.com/leadscloud/inquiry/issues</a> <p>
+                <p>如果有任何问题，请联系 sbmzhcn@gmail.com 或到 Github 上面提问: <a href="https://github.com/leadscloud/inquiry/issues"  target="_blank">https://github.com/leadscloud/inquiry/issues</a> <p>
                 <p>请使用chrome或firefox浏览器浏览此页面。后台界面在Chrome 19下测试正常。测试的操作系统为WIN7</p><p>初次登陆，请<a href="profile.php">修改你的密码</a>。退出时请求点击右上角的退出按钮。</p>
                 <p>字段说明：</p>
                 <div>

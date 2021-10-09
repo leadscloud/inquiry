@@ -13,10 +13,6 @@
 
 define('ABS_PATH',dirname(__FILE__));
 
-
-defined('DB_NAME') or define('DB_NAME', '#inquiry_system.sqlite.php');
-defined('DB_PREFIX') or define('DB_PREFIX', 'wp');
-
 // Turn on or off all error reporting
 error_reporting(1);
 
@@ -54,6 +50,9 @@ if (!defined("INSTALL") && !is_file(ABS_PATH.'/config.php')) {
 }
 
 include ABS_PATH.'/config.php';
+
+defined('DB_NAME') or define('DB_NAME', '#inquiry_system.sqlite.php');
+defined('DB_PREFIX') or define('DB_PREFIX', 'wp');
 
 define('DB_PATH',ABS_PATH.'/content/'.DB_NAME);
 

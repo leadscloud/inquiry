@@ -1622,7 +1622,7 @@ function is_blog_installed()
     return false;
 }
 
-function inquiry_add($title, $name, $email, $content, $phone, $country, $address, $fromcompany, $metadata = null)
+function inquiry_add($title, $name, $email, $content, $phone, $country, $address, $fromcompany, $metadata = null, $check = true)
 {
     $db = get_conn();
     $ua = getBrowser();
@@ -1640,6 +1640,11 @@ function inquiry_add($title, $name, $email, $content, $phone, $country, $address
 
     $timezone_offset = isset($metadata['timezone_offset']) ? $metadata['timezone_offset'] : null;
 
+    $type = 'inquiry';
+    if ($check && akismet_comment_check(Akismet_API_Key, $data)) {
+        $type = 'trashed';
+    }
+
     $msgid = $db->insert('#@_inquiry', array(
         'title' => $title,
         'name' => $name,
@@ -1651,7 +1656,7 @@ function inquiry_add($title, $name, $email, $content, $phone, $country, $address
         'ip' => getip(),
         'country' => $country,
         'address' => $address,
-        'type'    => akismet_comment_check(Akismet_API_Key, $data) ? 'trashed' : 'inquiry',
+        'type'    => $type,
         'from_company'    => $fromcompany,
 
         'browser_name' => $ua['name'],

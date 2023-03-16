@@ -158,6 +158,13 @@ CREATE TABLE #@_inquiry_meta (
   `value` longtext NOT NULL,
   `type` varchar(10)
 );
+DROP TABLE IF EXISTS #@_option;
+CREATE TABLE #@_option (
+  `option_id` INTEGER PRIMARY KEY,
+  `option_name` varchar(64) NOT NULL default '',
+  `option_value` longtext NOT NULL,
+  `autoload` varchar(20) NOT NULL default 'yes'
+);
 ";
 // CREATE INDEX IF NOT EXISTS index_read ON #@_inquiry (read);
 // CREATE INDEX IF NOT EXISTS index_type ON #@_inquiry (type);

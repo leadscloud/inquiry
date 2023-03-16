@@ -461,6 +461,7 @@ class db
     function result($sql, $row = 0)
     {
         $result = $this->query($sql);
+        if (!$result) return null;
         if ($rs = $this->fetch($result, 0)) {
             return $rs[$row];
         }
@@ -2711,7 +2712,7 @@ function C($key, $value = null)
             ));
         } else {
             // 查询数据库里是否已经存在
-            $length = (int) $db->result(vsprintf("SELECT COUNT(`option_id`) FROM `#@_option` WHERE `option_name`='%s'", esc_sql($key)));
+            $length = (int) $db->result(sprintf("SELECT COUNT(`option_id`) FROM `#@_option` WHERE `option_name`='%s'", esc_sql($key)));
             // update
             if ($length > 0) {
                 $db->update('#@_option', array(
